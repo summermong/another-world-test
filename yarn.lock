@@ -1831,6 +1831,11 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
+"@remix-run/router@1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.14.1.tgz#6d2dd03d52e604279c38911afc1079d58c50a755"
+  integrity sha512-Qg4DMQsfPNAs88rb2xkdk03N3bjK4jgX5fR24eHCTR9q6PrhZQZ4UJBPzCHJkIpTRN1UKxx2DzjZmnC+7Lj0Ow==
+
 "@rollup/pluginutils@^5.0.2":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.1.0.tgz#7e53eddc8c7f483a4ad0b94afb1f7f5fd3c771e0"
@@ -2034,6 +2039,13 @@
   integrity sha512-gu2y46ijjMkXlxy1f8Cctgjw5b5y8vSIqNAYlrs5/Qy+hJAWyU6lj2PFGOCCUG4L+F45fAjwWAin6qz43+WnRQ==
   dependencies:
     "@storybook/global" "^5.0.0"
+    ts-dedent "^2.0.0"
+
+"@storybook/addon-themes@^7.6.7":
+  version "7.6.7"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-themes/-/addon-themes-7.6.7.tgz#86d637941a75831fdf58455d863240c90a690a91"
+  integrity sha512-JoXYZxyPWNONbKVzBCFDUEW6bc4GFvyG9i8uJniTCf84pgj8H7Z6qDei8yJgAmQp1AeDdNsx2sYiFwQ45+OXlg==
+  dependencies:
     ts-dedent "^2.0.0"
 
 "@storybook/addon-toolbars@7.6.7":
@@ -6612,6 +6624,21 @@ react-remove-scroll@2.5.5:
     tslib "^2.1.0"
     use-callback-ref "^1.3.0"
     use-sidecar "^1.1.2"
+
+react-router-dom@^6.21.1:
+  version "6.21.1"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.21.1.tgz#58b459d2fe1841388c95bb068f85128c45e27349"
+  integrity sha512-QCNrtjtDPwHDO+AO21MJd7yIcr41UetYt5jzaB9Y1UYaPTCnVuJq6S748g1dE11OQlCFIQg+RtAA1SEZIyiBeA==
+  dependencies:
+    "@remix-run/router" "1.14.1"
+    react-router "6.21.1"
+
+react-router@6.21.1:
+  version "6.21.1"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.21.1.tgz#8db7ee8d7cfc36513c9a66b44e0897208c33be34"
+  integrity sha512-W0l13YlMTm1YrpVIOpjCADJqEUpz1vm+CMo47RuFX4Ftegwm6KOYsL5G3eiE52jnJpKvzm6uB/vTKTPKM8dmkA==
+  dependencies:
+    "@remix-run/router" "1.14.1"
 
 react-style-singleton@^2.2.1:
   version "2.2.1"
