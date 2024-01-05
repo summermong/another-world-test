@@ -1,8 +1,15 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+
+import Main from './pages/Main'
 
 function App() {
   return (
-<div></div>
+    <BrowserRouter>
+<Routes>
+  <Route path='/' element={<Main /> } />
+</Routes>
+</BrowserRouter>
   )
 }
 
