@@ -8,14 +8,12 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
-    backgroundColor: { control: 'color' },
+    onClick: { action: 'clicked' },
   },
 };
 
-export const Primary = () => <Button primary label="Button" />;
+export const StartButton = args => <Button size="large" backgroundColor="white" {...args} />;
 
-export const Secondary = () => <Button label="Button" />;
+export const TestButton = () => <Button size="large" backgroundColor="white" label="안녕" />;
 
-export const StartButton = () => <Button size="large" backgroundColor="white" label="시작하기" />;
-
-export const Small = () => <Button size="small" label="Button" />;
+export const ChoiceButton = args => <Button size="medium" backgroundColor="white" {...args} />;
