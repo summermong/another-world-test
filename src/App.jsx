@@ -4,11 +4,16 @@ import GlobalStyles from './style/GlobalStyles';
 import styled from 'styled-components';
 
 import Start from './pages/Start';
+import Questions from './pages/Questions';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const music = useMemo(() => new Audio('./public/music/ost.mp3'), []);
+  const music = useMemo(() => {
+    const audio = new Audio('./music/ost.mp3');
+    audio.loop = true;
+    return audio;
+  }, []);
 
   const handleMusicStart = () => {
     if (!isPlaying) {
@@ -21,7 +26,7 @@ function App() {
   };
 
   const getMusicIcon = () => {
-    return isPlaying ? './public/img/icon/music.png' : './public/img/icon/mute.png';
+    return isPlaying ? './img/icon/music.png' : './img/icon/mute.png';
   };
 
   useEffect(() => {
@@ -45,6 +50,7 @@ function App() {
         <Background />
         <Routes>
           <Route path="/" element={<Start />} />
+          <Route path="/questions" element={<Questions />} />
         </Routes>
       </BrowserRouter>
     </AppContainer>
@@ -56,6 +62,7 @@ const AppContainer = styled.div`
   width: 100%;
   justify-content: center;
   position: relative;
+  font-family: 'Heir of Light';
 `;
 
 const MusicPlayer = styled.div`
@@ -83,12 +90,12 @@ const Music = styled.img`
 
 const Background = styled.div`
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-image: url('./img/background/background.jpg');
   background-size: cover;
   background-position: center center;
-  filter: brightness(0.4);
+  filter: brightness(0.6);
 `;
 
 export default App;
