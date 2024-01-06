@@ -1,16 +1,22 @@
-import React from 'react';
 import styled from 'styled-components';
 import { StartButton } from '../stories/Button.stories';
+import { useNavigate } from 'react-router-dom';
 
 const Start = () => {
+  const navigate = useNavigate();
+
+  const goToQuestion = () => {
+    navigate('/questions');
+  };
+
   return (
     <MainContainer>
       <Main>
         <Title>
           눈을 떴더니<p></p>
-          <span>이세계</span>의 뭔가가<p></p>되어버린 <span>나</span>
+          <span>이세계</span>의 뭔가가<p></p>되어버린 <span>나!?</span>
         </Title>
-        <StartButton />
+        <StartButton label={'시작하기'} onClick={goToQuestion} />
       </Main>
     </MainContainer>
   );
