@@ -12,11 +12,12 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "jackspeak": "2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
-    "styled-components": "^6.1.6",
-    "jackspeak": "2.1.1"
+    "recoil": "^0.7.7",
+    "styled-components": "^6.1.6"
   },
   "resolutions": {
     "jackspeak": "2.1.1"
