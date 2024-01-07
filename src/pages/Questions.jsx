@@ -2,18 +2,51 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { ChoiceButton } from '../stories/Button.stories';
 import questionData from '../data/questionData';
+import { useNavigate } from 'react-router-dom';
 
 const Questions = () => {
+  const navigate = useNavigate();
+
   const [curQIdx, setCurQIdx] = useState(0);
-
-  const handleNextQ = type => {
-    setCurQIdx(prevIdx => prevIdx + 1);
-    console.log(type);
-  };
-
   const curQ = questionData[curQIdx];
 
-  console.log(curQ.Num);
+  const [ie, setIE] = useState(0);
+  const [ns, setNS] = useState(0);
+  const [tf, setTF] = useState(0);
+  const [pj, setPJ] = useState(0);
+
+  const handleNextQ = type => {
+    if (curQIdx + 1 < questionData.length) {
+      setCurQIdx(prevIdx => prevIdx + 1);
+
+      switch (type) {
+        case 'E':
+          setIE(prev => prev + 1);
+          break;
+        case 'S':
+          setNS(prev => prev + 1);
+          break;
+        case 'F':
+          setTF(prev => prev + 1);
+          break;
+        case 'J':
+          setPJ(prev => prev + 1);
+          break;
+        default:
+          return;
+      }
+    } else {
+      let result = '';
+
+      result += ie >= 2 ? 'E' : 'I';
+      result += ns >= 2 ? 'S' : 'N';
+      result += tf >= 2 ? 'F' : 'T';
+      result += pj >= 2 ? 'J' : 'P';
+
+      console.log(result);
+      navigate('/result');
+    }
+  };
 
   return (
     <QuestionContainer>
