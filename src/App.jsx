@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Start from './pages/Start';
 import Questions from './pages/Questions';
+import Result from './pages/Result';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -51,6 +52,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Start />} />
           <Route path="/questions" element={<Questions />} />
+          <Route path="/result" element={<Result />} />
         </Routes>
       </BrowserRouter>
     </AppContainer>
