@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { ChoiceButton } from '../stories/Button.stories';
 import questionData from '../data/questionData';
 import { useNavigate } from 'react-router-dom';
+import { mbtiResult } from '../atom/MBTIResult';
+import { useRecoilState } from 'recoil';
 
 const Questions = () => {
   const navigate = useNavigate();
@@ -14,6 +16,8 @@ const Questions = () => {
   const [ns, setNS] = useState(0);
   const [tf, setTF] = useState(0);
   const [pj, setPJ] = useState(0);
+
+  const [mbti, setMbti] = useRecoilState(mbtiResult);
 
   const handleNextQ = type => {
     if (curQIdx + 1 < questionData.length) {
@@ -36,15 +40,15 @@ const Questions = () => {
           return;
       }
     } else {
-      let result = '';
+      let mbti = '';
 
-      result += ie >= 2 ? 'E' : 'I';
-      result += ns >= 2 ? 'S' : 'N';
-      result += tf >= 2 ? 'F' : 'T';
-      result += pj >= 2 ? 'J' : 'P';
+      mbti += ie >= 2 ? 'E' : 'I';
+      mbti += ns >= 2 ? 'S' : 'N';
+      mbti += tf >= 2 ? 'F' : 'T';
+      mbti += pj >= 2 ? 'J' : 'P';
 
-      console.log(result);
-      navigate('/result');
+      setMbti(mbti);
+      navigate(`/result`);
     }
   };
 
