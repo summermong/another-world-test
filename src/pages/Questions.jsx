@@ -19,9 +19,13 @@ const Questions = () => {
 
   const [mbti, setMbti] = useRecoilState(mbtiResult);
 
+  const [width, setWidth] = useState(1);
+
   const handleNextQ = type => {
     if (curQIdx + 1 < questionData.length) {
       setCurQIdx(prevIdx => prevIdx + 1);
+
+      setWidth(((curQIdx + 2) / questionData.length) * 300);
 
       switch (type) {
         case 'E':
@@ -48,7 +52,7 @@ const Questions = () => {
       mbti += pj >= 2 ? 'J' : 'P';
 
       setMbti(mbti);
-      navigate(`/result`);
+      navigate(`/result/${mbti}`);
     }
   };
 
@@ -58,7 +62,9 @@ const Questions = () => {
         <QuestionNum>Q. {curQ.Num}</QuestionNum>
         <div>{curQ.Q}</div>
       </QuestionBox>
-      <ProgressBar />
+      <ProgressBar>
+        <Progress width={width} />
+      </ProgressBar>
       <AnswerBox>
         {curQ.A.map((answer, idx) => (
           <ChoiceButton
@@ -100,11 +106,18 @@ const QuestionNum = styled.div`
 
 const ProgressBar = styled.div`
   width: 300px;
-  height: 3px;
+  height: 10px;
   background-color: #fff;
   border-radius: 50px;
   box-shadow: 0 0 10px #df7abe;
   margin: 20px 0px;
+`;
+
+const Progress = styled.div`
+  width: ${props => props.width}px;
+  height: 10px;
+  background-color: #bf8df2;
+  border-radius: 50px;
 `;
 
 const AnswerBox = styled.div`
