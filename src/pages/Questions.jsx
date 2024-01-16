@@ -19,13 +19,15 @@ const Questions = () => {
 
   const [mbti, setMbti] = useRecoilState(mbtiResult);
 
-  const [width, setWidth] = useState(1);
+  const [width, setWidth] = useState(0);
+
+  console.log(curQIdx);
 
   const handleNextQ = type => {
     if (curQIdx + 1 < questionData.length) {
       setCurQIdx(prevIdx => prevIdx + 1);
 
-      setWidth(((curQIdx + 2) / questionData.length) * 300);
+      setWidth(((curQIdx + 2) / questionData.length) * 250);
 
       switch (type) {
         case 'E':
@@ -56,15 +58,29 @@ const Questions = () => {
     }
   };
 
+  const handlePrevQ = () => {
+    if (curQIdx > 0) {
+      setCurQIdx(prevIdx => {
+        setWidth(((prevIdx - 1) / questionData.length) * 250);
+        return prevIdx - 1;
+      });
+    }
+  };
+
+  console.log(width);
+
   return (
     <QuestionContainer>
       <QuestionBox>
         <QuestionNum>Q. {curQ.Num}</QuestionNum>
         <div>{curQ.Q}</div>
       </QuestionBox>
-      <ProgressBar>
-        <Progress width={width} />
-      </ProgressBar>
+      <BarAndPrevWrapper>
+        <PreButton onClick={handlePrevQ}>{'<<'}</PreButton>
+        <ProgressBar>
+          <Progress width={width} />
+        </ProgressBar>
+      </BarAndPrevWrapper>
       <AnswerBox>
         {curQ.A.map((answer, idx) => (
           <ChoiceButton
@@ -104,13 +120,32 @@ const QuestionNum = styled.div`
   font-weight: 700;
 `;
 
+const BarAndPrevWrapper = styled.div`
+  width: 280px;
+  display: flex;
+  justify-content: space-around;
+`;
+
 const ProgressBar = styled.div`
-  width: 300px;
+  width: 250px;
   height: 10px;
   background-color: #fff;
   border-radius: 50px;
   box-shadow: 0 0 10px #df7abe;
   margin: 20px 0px;
+`;
+
+const PreButton = styled.button`
+  background-color: transparent;
+  color: white;
+  text-shadow: 0 0 10px #fff;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    color: #bf8df2;
+  }
 `;
 
 const Progress = styled.div`
