@@ -1,12 +1,12 @@
 import styled, { ThemeProvider } from 'styled-components';
 import themes from '../style/themes';
-import resultData from '../data/resultData';
+import { resultData } from '../data/resultData';
 import { MatchData } from '../data/resultData';
 import { useRecoilValue } from 'recoil';
 import { mbtiResult } from '../atom/MBTIResult';
 import { AdButton } from '../stories/Button.stories';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Result = () => {
   const result = useRecoilValue(mbtiResult);
@@ -19,6 +19,16 @@ const Result = () => {
       navigate('/error');
     }
   }, []);
+
+  const handleReplay = () => {
+    navigate('/');
+  };
+
+  const [isShareOpen, setIsShareOpen] = useState(false);
+
+  const handleShare = () => {
+    setIsShareOpen(!isShareOpen);
+  };
 
   return (
     <ThemeProvider theme={themes}>
@@ -46,8 +56,11 @@ const Result = () => {
           </MatchWrapper>
           <AdButton label="광고 보고 전체 결과 보기" />
           <Buttons>
-            <ReButton>{'<< 다시하기'}</ReButton>
-            <ShareButton>{'공유하기 >>'}</ShareButton>
+            <ReButton onClick={handleReplay}>{'<< 다시하기'}</ReButton>
+            <ShareButton onClick={handleShare}>
+              {'공유하기 >>'}
+              {isShareOpen ? <ShareMenu /> : ''}
+            </ShareButton>
           </Buttons>
         </ResultBox>
       </ResultContainer>
@@ -141,7 +154,7 @@ const MatchImg = styled.img`
   width: 80px;
   padding: 15px;
   margin: 10px;
-  border-radius: 50%;
+  border-radius: 20%;
 `;
 
 const MatchInfo = styled.div`
@@ -167,20 +180,33 @@ const MatchName = styled.div`
 const Buttons = styled.section`
   display: flex;
   justify-content: space-between;
-  padding-top: 20px;
+  padding-top: 10px;
 `;
 
 const BaseButton = styled.button`
   border: none;
   background-color: transparent;
   color: white;
-  padding-bottom: 10px;
+  padding-top: 30px;
   font-family: 'Heir of Light';
   cursor: pointer;
 `;
 
 const ReButton = styled(BaseButton)``;
 
-const ShareButton = styled(BaseButton)``;
+const ShareButton = styled(BaseButton)`
+  position: relative;
+`;
+
+const ShareMenu = styled.div`
+  width: 150px;
+  height: 40px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 25px;
+  position: absolute;
+  top: -15px;
+  right: 0px;
+`;
 
 export default Result;
