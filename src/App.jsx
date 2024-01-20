@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import Start from './pages/Start';
 import Questions from './pages/Questions';
 import Result from './pages/Result';
+import Loading from './pages/Loading';
+import { RecoilRoot } from 'recoil';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -27,7 +29,7 @@ function App() {
   };
 
   const getMusicIcon = () => {
-    return isPlaying ? './img/icon/music.png' : './img/icon/mute.png';
+    return isPlaying ? '/img/icon/music.png' : '/img/icon/mute.png';
   };
 
   useEffect(() => {
@@ -42,20 +44,24 @@ function App() {
   }, [music]);
 
   return (
-    <AppContainer>
-      <MusicPlayer>
-        <Music src={getMusicIcon()} onClick={handleMusicStart} />
-      </MusicPlayer>
-      <BrowserRouter>
-        <GlobalStyles />
-        <Background />
-        <Routes>
-          <Route path="/" element={<Start />} />
-          <Route path="/questions" element={<Questions />} />
-          <Route path="/result" element={<Result />} />
-        </Routes>
-      </BrowserRouter>
-    </AppContainer>
+    <RecoilRoot>
+      <AppContainer>
+        <BrowserRouter basename="/">
+          <MusicPlayer>
+            <Music src={getMusicIcon()} onClick={handleMusicStart} />
+          </MusicPlayer>
+          <GlobalStyles />
+          <Background />
+          <Routes>
+            <Route path="/" element={<Start />} />
+            <Route path="/questions" element={<Questions />} />
+            <Route path="/result/:testResult" element={<Result />} />
+            <Route path="/error" element={<Loading />} />
+            <Route path="*" element={<Loading />} />
+          </Routes>
+        </BrowserRouter>
+      </AppContainer>
+    </RecoilRoot>
   );
 }
 
@@ -94,7 +100,7 @@ const Background = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-image: url('./img/background/background.jpg');
+  background-image: url('/img/background/background.jpg');
   background-size: cover;
   background-position: center center;
   filter: brightness(0.6);
