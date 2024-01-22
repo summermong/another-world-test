@@ -59,7 +59,15 @@ const Result = () => {
             <ReButton onClick={handleReplay}>{'<< 다시하기'}</ReButton>
             <ShareButton onClick={handleShare}>
               {'공유하기 >>'}
-              {isShareOpen ? <ShareMenu /> : ''}
+              {isShareOpen ? (
+                <ShareMenu>
+                  <KaKaoButton color="yellow">카톡</KaKaoButton>
+                  <LinkButton color="blue">링크</LinkButton>
+                  <SaveButton color="green">저장</SaveButton>
+                </ShareMenu>
+              ) : (
+                ''
+              )}
             </ShareButton>
           </Buttons>
         </ResultBox>
@@ -199,14 +207,38 @@ const ShareButton = styled(BaseButton)`
 `;
 
 const ShareMenu = styled.div`
-  width: 150px;
+  width: 120px;
   height: 40px;
-  padding: 10px;
+  padding: 5px;
   background-color: white;
   border-radius: 25px;
   position: absolute;
   top: -15px;
   right: 0px;
+  display: flex;
+  justify-content: space-around;
+  color: red;
+  cursor: pointer;
+`;
+
+const ShareButtons = styled.button`
+  border: none;
+  border-radius: 25px;
+  padding: 5px;
+  cursor: pointer;
+  ${({ color }) => `background-color: ${color};`};
+`;
+
+const KaKaoButton = styled(ShareButtons)`
+  background-color: red;
+`;
+
+const LinkButton = styled(ShareButtons)`
+  background-color: blue;
+`;
+
+const SaveButton = styled(ShareButtons)`
+  background-color: yellow;
 `;
 
 export default Result;
