@@ -2,7 +2,7 @@ export const resultData = {
   ENFJ: {
     src: `/img/result/ENFJ.png`,
     title: '선을 위해 노력하는 사제',
-    sub: '올바른 일에 누군가는 앞장 서야 해요.',
+    sub: '올바른 일에 앞장 설게요.',
     desc: `
     당신을 대표하는 단어는 '인류애와 조화'입니다.
     아름다운 세상과 평화를 추구하는 당신은
@@ -48,7 +48,7 @@ export const resultData = {
   },
   ENTJ: {
     src: `/img/result/ENTJ.png`,
-    title: '믿음직스러운 리더, 보안관',
+    title: '믿음직스러운 보안관',
     sub: 'born to be Leader!',
     desc: `
     당신을 대표하는 단어는 '카리스마'입니다.
@@ -73,7 +73,7 @@ export const resultData = {
   ENTP: {
     src: `/img/result/ENTP.png`,
     title: '혁명을 꿈꾸는 마검사',
-    sub: '가시밭길에도 신념을 지켜야 해요.',
+    sub: '가시밭길에도 신념을 지켜요.',
     desc: `
     당신을 대표하는 단어는 '자신감'입니다.
     특유의 능글거리면서 경쾌한 성격과 빠른 적응력,
@@ -96,7 +96,7 @@ export const resultData = {
   },
   ESFJ: {
     src: `/img/result/ESFJ.png`,
-    title: '백작가의 아가씨/도련님',
+    title: '백작 아가씨/도련님',
     sub: '인생은 기브 앤 테이크예요.',
     desc: `
     당신을 대표하는 단어는 '배려'입니다.
@@ -120,7 +120,7 @@ export const resultData = {
   },
   ESFP: {
     src: `/img/result/ESFP.png`,
-    title: '천생 연예인, 매력적인 무희',
+    title: '매력적인 무희',
     sub: '인생은 매 순간 즐겨야 해요!',
     desc: `    
     당신을 대표하는 단어는 '분위기 메이커'입니다.
@@ -190,7 +190,7 @@ export const resultData = {
   },
   INFJ: {
     src: `/img/result/INFJ.png`,
-    title: '지혜롭고 신비로운 점술사',
+    title: '지혜로운 점술사',
     sub: '가끔은 오래 지켜봐야 해요.',
     desc: `
     당신을 대표하는 단어는 '생각'입니다.
@@ -215,7 +215,7 @@ export const resultData = {
   },
   INFP: {
     src: `/img/result/INFP.png`,
-    title: '낭만의 대명사, 음유시인',
+    title: '낭만적인 음유시인',
     sub: '이상향을 찾아 떠나요.',
     desc: `
     당신을 대표하는 단어는 '감성'입니다.
@@ -239,7 +239,7 @@ export const resultData = {
   INTJ: {
     src: `/img/result/INTJ.png`,
     title: '어둠의 대마법사',
-    sub: '최고가 되는 것은 언제나 고독하다!',
+    sub: '최고는 언제나 고독하다!',
     desc: `
     당신을 대표하는 단어는 '이성과 논리'입니다.
     합리성과 통찰력을 기반으로 사고하는 당신은
@@ -288,7 +288,7 @@ export const resultData = {
   },
   ISFJ: {
     src: `/img/result/ISFJ.png`,
-    title: '이세계의 유능한 궁정 약사',
+    title: '유능한 궁정 약사',
     sub: '곤란한 일은 언제든 도울게요!',
     desc: `
     당신을 대표하는 단어는 '배려심'입니다.
@@ -313,7 +313,7 @@ export const resultData = {
   ISFP: {
     src: `/img/result/ISFP.png`,
     title: '따뜻한 감성의 힐러',
-    sub: '거창한 명예보다 소확행이 중요해요.',
+    sub: '소소하지만 확실한 행복을 위해!',
     desc: `
     당신을 대표하는 단어는 '소박함'입니다.
     불확실한 미래보다 확실한 현재가 중요한 당신은
@@ -339,7 +339,7 @@ export const resultData = {
   ISTJ: {
     src: `/img/result/ISTJ.png`,
     title: '엘리트 기사단장',
-    sub: '자신의 씨앗은 자신이 거둬야 한다.',
+    sub: '자신의 씨앗은 자신이 거둬라!',
     desc: `
     당신을 대표하는 단어는 '책임감'입니다.
     질서와 안정을 중요하게 생각하는 당신은
@@ -365,7 +365,7 @@ export const resultData = {
   ISTP: {
     src: `/img/result/ISTP.png`,
     title: '외강내유 대장장이',
-    sub: '백 마디 말보다 한 번의 행동이 낫다.',
+    sub: '백 마디 말보다 한 번의 행동!',
     desc: `
     당신을 대표하는 단어는 '과묵'입니다.
     마음에 없는 얘기, 관심 없는 가십은 귀찮아요.
