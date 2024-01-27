@@ -22,15 +22,17 @@ const StyledButton = styled.button`
     background-color: transparent;
   }
 
-  &.storybook-button--small {
-    font-size: 12px;
-    padding: 10px 16px;
-  }
-
-  &.storybook-button--medium {
+  &.storybook-button--choice {
     font-size: 12px;
     padding: 11px 20px;
     width: 280px;
+  }
+
+  &.storybook-button--big {
+    font-size: 12px;
+    padding: 11px 20px;
+    width: 280px;
+    margin: 20px 0px;
   }
 
   &.storybook-button--large {
@@ -61,7 +63,7 @@ const Button = ({ primary, backgroundColor, size, label, onClick }) => {
 Button.propTypes = {
   primary: PropTypes.bool,
   backgroundColor: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['choice', 'big', 'large']),
   label: PropTypes.string,
   onClick: PropTypes.func,
 };
@@ -69,7 +71,7 @@ Button.propTypes = {
 Button.defaultProps = {
   backgroundColor: null,
   primary: false,
-  size: 'medium',
+  size: 'big',
   onClick: undefined,
   label: null,
 };
