@@ -8,6 +8,7 @@ import Questions from './pages/Questions';
 import Result from './pages/Result';
 import Loading from './pages/Loading';
 import { RecoilRoot } from 'recoil';
+import Results from './pages/Results';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -56,6 +57,7 @@ function App() {
             <Route path="/" element={<Start />} />
             <Route path="/questions" element={<Questions />} />
             <Route path="/result/:testResult" element={<Result />} />
+            <Route path="/results" element={<Results />} />
             <Route path="/error" element={<Loading />} />
             <Route path="*" element={<Loading />} />
           </Routes>
