@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { ChoiceButton } from '../stories/Button.stories';
 import questionData from '../data/questionData';
 import { useNavigate } from 'react-router-dom';
-import { mbtiResult } from '../atom/MBTIResult';
-import { useRecoilState } from 'recoil';
 
 const Questions = () => {
   const navigate = useNavigate();
@@ -17,11 +15,7 @@ const Questions = () => {
   const [tf, setTF] = useState(0);
   const [pj, setPJ] = useState(0);
 
-  const [mbti, setMbti] = useRecoilState(mbtiResult);
-
   const [width, setWidth] = useState(0);
-
-  console.log(curQIdx);
 
   const handleNextQ = type => {
     if (curQIdx + 1 < questionData.length) {
@@ -53,7 +47,6 @@ const Questions = () => {
       mbti += tf >= 2 ? 'F' : 'T';
       mbti += pj >= 2 ? 'J' : 'P';
 
-      setMbti(mbti);
       navigate(`/result/${mbti}`);
     }
   };
@@ -67,8 +60,6 @@ const Questions = () => {
     }
   };
 
-  console.log(width);
-
   return (
     <QuestionContainer>
       <QuestionBox>
@@ -76,7 +67,7 @@ const Questions = () => {
         <div>{curQ.Q}</div>
       </QuestionBox>
       <BarAndPrevWrapper>
-        <PreButton onClick={handlePrevQ}>{'<<'}</PreButton>
+        <PreButton onClick={handlePrevQ}>◀️</PreButton>
         <ProgressBar>
           <Progress width={width} />
         </ProgressBar>
@@ -123,6 +114,7 @@ const QuestionNum = styled.div`
 const BarAndPrevWrapper = styled.div`
   width: 280px;
   display: flex;
+  align-items: center;
   justify-content: space-around;
 `;
 
@@ -136,11 +128,11 @@ const ProgressBar = styled.div`
 `;
 
 const PreButton = styled.button`
-  background-color: transparent;
   color: white;
-  text-shadow: 0 0 10px #fff;
+  background: transparent;
+  text-shadow: 0 0 10px #df7abe;
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
 
   &:hover {
