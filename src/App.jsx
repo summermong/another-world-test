@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import Start from './pages/Start';
 import Questions from './pages/Questions';
 import Result from './pages/Result';
-import Loading from './pages/Loading';
 import { RecoilRoot } from 'recoil';
 import Results from './pages/Results';
 
@@ -52,14 +51,11 @@ function App() {
             <Music src={getMusicIcon()} onClick={handleMusicStart} />
           </MusicPlayer>
           <GlobalStyles />
-          <Background />
           <Routes>
             <Route path="/" element={<Start />} />
             <Route path="/questions" element={<Questions />} />
             <Route path="/result/:testResult" element={<Result />} />
             <Route path="/results" element={<Results />} />
-            <Route path="/error" element={<Loading />} />
-            <Route path="*" element={<Loading />} />
           </Routes>
         </BrowserRouter>
       </AppContainer>
@@ -69,7 +65,8 @@ function App() {
 
 const AppContainer = styled.div`
   display: flex;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   justify-content: center;
   position: relative;
   font-family: 'Heir of Light';
@@ -96,16 +93,6 @@ const Music = styled.img`
   width: 20px;
   height: 20px;
   padding: 2px;
-`;
-
-const Background = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/img/background/background.jpg');
-  background-size: cover;
-  background-position: center center;
-  filter: brightness(0.6);
 `;
 
 export default App;
