@@ -74,7 +74,7 @@ const Questions = () => {
     <QuestionContainer>
       {isLoadingOpen ? (
         <LoadingSpinner>
-          Loading...
+          이세계로 로딩중...
           <BarLoader
             color="#bf8df2"
             height="10px"
