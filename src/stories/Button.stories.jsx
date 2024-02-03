@@ -12,10 +12,10 @@ export default {
   },
 };
 
-export const StartButton = args => <Button size="large" backgroundColor="white" {...args} />;
-
-export const AdButton = args => <Button size="big" backgroundColor="white" {...args} />;
-
-export const TestButton = () => <Button size="large" backgroundColor="white" label="안녕" />;
+export const StartButton = args => <Button size="start" backgroundColor="white" {...args} />;
 
 export const ChoiceButton = args => <Button size="choice" backgroundColor="white" {...args} />;
+
+export const LinkButton = args => <Button size="result" backgroundColor="white" {...args} />;
+
+export const KatalkButton = args => <Button size="result" backgroundColor="white" {...args} />;

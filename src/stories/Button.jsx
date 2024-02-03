@@ -12,30 +12,20 @@ const StyledButton = styled.button`
   color: black;
   box-shadow: 0 0 10px #df7abe;
 
-  &.storybook-button--primary {
-    color: white;
-    background-color: #1ea7fd;
-  }
-
-  &.storybook-button--secondary {
-    color: #333;
-    background-color: transparent;
-  }
-
   &.storybook-button--choice {
     font-size: 12px;
     padding: 11px 20px;
-    width: 280px;
+    width: 300px;
   }
 
-  &.storybook-button--big {
+  &.storybook-button--result {
     font-size: 12px;
     padding: 11px 20px;
-    width: 280px;
-    margin: 20px 0px;
+    width: 300px;
+    margin: 10px 0px;
   }
 
-  &.storybook-button--large {
+  &.storybook-button--start {
     font-size: 16px;
     padding: 12px 24px;
     width: 200px;
@@ -46,12 +36,11 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ primary, backgroundColor, size, label, onClick }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+const Button = ({ backgroundColor, size, label, onClick }) => {
   return (
     <StyledButton
       type="button"
-      className={`storybook-button--${size} ${mode}`}
+      className={`storybook-button--${size}`}
       style={backgroundColor && { backgroundColor }}
       onClick={onClick}
     >
@@ -61,17 +50,15 @@ const Button = ({ primary, backgroundColor, size, label, onClick }) => {
 };
 
 Button.propTypes = {
-  primary: PropTypes.bool,
   backgroundColor: PropTypes.string,
-  size: PropTypes.oneOf(['choice', 'big', 'large']),
+  size: PropTypes.oneOf(['choice', 'result', 'start']),
   label: PropTypes.string,
   onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
   backgroundColor: null,
-  primary: false,
-  size: 'big',
+  size: 'start',
   onClick: undefined,
   label: null,
 };
