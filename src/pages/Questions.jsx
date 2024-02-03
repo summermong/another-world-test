@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ChoiceButton } from '../stories/Button.stories';
 import questionData from '../data/questionData';
 import { useNavigate } from 'react-router-dom';
+import BarLoader from 'react-spinners/BarLoader';
 
 const Questions = () => {
   const navigate = useNavigate();
@@ -16,6 +17,11 @@ const Questions = () => {
   const [pj, setPJ] = useState(0);
 
   const [width, setWidth] = useState(0);
+  const [isLoadingOpen, setIsLoadingOpen] = useState(false);
+
+  const css = {
+    borderRadius: '10px',
+  };
 
   const handleNextQ = type => {
     if (curQIdx + 1 < questionData.length) {
@@ -40,6 +46,7 @@ const Questions = () => {
           return;
       }
     } else {
+      setIsLoadingOpen(true);
       let mbti = '';
 
       mbti += ie >= 2 ? 'E' : 'I';
@@ -47,7 +54,10 @@ const Questions = () => {
       mbti += tf >= 2 ? 'F' : 'T';
       mbti += pj >= 2 ? 'J' : 'P';
 
-      navigate(`/result/${mbti}`);
+      setTimeout(() => {
+        setIsLoadingOpen(false);
+        navigate(`/result/${mbti}`);
+      }, '5000');
     }
   };
 
@@ -62,29 +72,57 @@ const Questions = () => {
 
   return (
     <QuestionContainer>
-      <QuestionBox>
-        <QuestionNum>Q. {curQ.Num}</QuestionNum>
-        <div>{curQ.Q}</div>
-      </QuestionBox>
-      <BarAndPrevWrapper>
-        <PreButton onClick={handlePrevQ}>◀️</PreButton>
-        <ProgressBar>
-          <Progress width={width} />
-        </ProgressBar>
-      </BarAndPrevWrapper>
-      <AnswerBox>
-        {curQ.A.map((answer, idx) => (
-          <ChoiceButton
-            key={idx}
-            onClick={() => handleNextQ(answer.type)}
-            label={answer.text}
-            answer={answer}
+      {isLoadingOpen ? (
+        <LoadingSpinner>
+          Loading...
+          <BarLoader
+            color="#bf8df2"
+            height="10px"
+            width="250px"
+            loading={setIsLoadingOpen}
+            aria-label="Loading Spinner"
+            cssOverride={css}
+            speedMultiplier="1"
           />
-        ))}
-      </AnswerBox>
+        </LoadingSpinner>
+      ) : (
+        <>
+          <QuestionBox>
+            <QuestionNum>Q. {curQ.Num}</QuestionNum>
+            <div>{curQ.Q}</div>
+          </QuestionBox>
+          <BarAndPrevWrapper>
+            <PreButton onClick={handlePrevQ}>◀️</PreButton>
+            <ProgressBar>
+              <Progress width={width} />
+            </ProgressBar>
+          </BarAndPrevWrapper>
+          <AnswerBox>
+            {curQ.A.map((answer, idx) => (
+              <ChoiceButton
+                key={idx}
+                onClick={() => handleNextQ(answer.type)}
+                label={answer.text}
+                answer={answer}
+              />
+            ))}
+          </AnswerBox>
+        </>
+      )}
     </QuestionContainer>
   );
 };
+
+const LoadingSpinner = styled.div`
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-weight: 700;
+  text-shadow: 0 0 10px #bf8df2;
+`;
 
 const QuestionContainer = styled.div`
   display: flex;
@@ -94,16 +132,17 @@ const QuestionContainer = styled.div`
   height: 100vh;
   position: relative;
   color: white;
+  gap: 10px;
 `;
 
 const QuestionBox = styled.div`
-  width: 280px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  padding: 20px 0px;
-  text-shadow: 0 0 10px #df7abe;
+  font-size: 16px;
+  text-shadow: 0 0 10px #17bbd4;
 `;
 
 const QuestionNum = styled.div`
@@ -112,10 +151,11 @@ const QuestionNum = styled.div`
 `;
 
 const BarAndPrevWrapper = styled.div`
-  width: 280px;
+  width: 300px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  padding-bottom: 20px;
 `;
 
 const ProgressBar = styled.div`
@@ -132,7 +172,7 @@ const PreButton = styled.button`
   background: transparent;
   text-shadow: 0 0 10px #df7abe;
   border: none;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
 
   &:hover {
@@ -150,8 +190,7 @@ const Progress = styled.div`
 const AnswerBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 280px;
-  height: 50vh;
+  width: 300px;
   gap: 20px;
   padding-top: 20px;
 `;
