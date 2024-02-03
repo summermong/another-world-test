@@ -2,20 +2,35 @@ import styled, { ThemeProvider } from 'styled-components';
 import themes from '../style/themes';
 import { resultData } from '../data/resultData';
 import { MatchData } from '../data/resultData';
-import { useRecoilValue } from 'recoil';
-import { mbtiResult } from '../atom/MBTIResult';
-import { AdButton } from '../stories/Button.stories';
+import { KatalkButton, LinkButton } from '../stories/Button.stories';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const Result = () => {
-  const result = useRecoilValue(mbtiResult);
-
   const { testResult } = useParams();
   const navigate = useNavigate();
 
+  const validMbti = [
+    'INFP',
+    'ENFP',
+    'INFJ',
+    'ENFJ',
+    'INTP',
+    'ENTP',
+    'INTJ',
+    'ENTJ',
+    'ISFP',
+    'ESFP',
+    'ISTP',
+    'ESTP',
+    'ISFJ',
+    'ESFJ',
+    'ISTJ',
+    'ESTJ',
+  ];
+
   useEffect(() => {
-    if (!result || result === '') {
+    if (!testResult || !validMbti.includes(testResult)) {
       navigate('/error');
     }
   }, []);
@@ -24,52 +39,41 @@ const Result = () => {
     navigate('/');
   };
 
-  const [isShareOpen, setIsShareOpen] = useState(false);
-
-  const handleShare = () => {
-    setIsShareOpen(!isShareOpen);
-  };
-
   return (
     <ThemeProvider theme={themes}>
       <ResultContainer>
         <ResultBox>
           <ImgWrapper>
-            <ResultImg src={resultData[result]?.src} />
+            <ResultImg src={resultData[testResult]?.src} />
           </ImgWrapper>
-          <Title>{resultData[result]?.title}</Title>
-          <Sub>{resultData[result]?.sub}</Sub>
-          <Desc>{resultData[result]?.desc}</Desc>
+          <Title>{resultData[testResult]?.title}</Title>
+          <Desc>{resultData[testResult]?.desc}</Desc>
           <MatchWrapper>
-            <MatchImg src={`${MatchData[result]?.good.src}`} />
-            <MatchInfo>
-              <Match> GOOD ❤️ </Match>
-              <MatchName>{MatchData[result]?.good.title}</MatchName>
-            </MatchInfo>
+            <MatchResult>
+              <MatchImgWrapper>
+                <MatchImg src={`${MatchData[testResult]?.good.src}`} />
+              </MatchImgWrapper>
+              <MatchInfo>
+                <Match> ❤️ {MatchData[testResult]?.good.title} </Match>
+              </MatchInfo>
+            </MatchResult>
+            <MatchResult>
+              <MatchImgWrapper>
+                <MatchImg src={`${MatchData[testResult]?.bad.src}`} />
+              </MatchImgWrapper>
+              <MatchInfo>
+                <Match> 💔 {MatchData[testResult]?.bad.title} </Match>
+              </MatchInfo>
+            </MatchResult>
           </MatchWrapper>
-          <MatchWrapper>
-            <MatchImg src={`${MatchData[result]?.bad.src}`} />
-            <MatchInfo>
-              <Match> BAD 💔 </Match>
-              <MatchName>{MatchData[result]?.bad.title}</MatchName>
-            </MatchInfo>
-          </MatchWrapper>
-          <AdButton label="광고 보고 전체 결과 보기" />
-          <Buttons>
-            <ReButton onClick={handleReplay}>{'<< 다시하기'}</ReButton>
-            <ShareButton onClick={handleShare}>
-              {'공유하기 >>'}
-              {isShareOpen ? (
-                <ShareMenu>
-                  <KaKaoButton color="yellow">카톡</KaKaoButton>
-                  <LinkButton color="blue">링크</LinkButton>
-                  <SaveButton color="green">저장</SaveButton>
-                </ShareMenu>
-              ) : (
-                ''
-              )}
-            </ShareButton>
-          </Buttons>
+          <ShareButton>
+            <KatalkButton label={'카카오톡 공유하기'} />
+            <LinkButton label={'링크 복사하기'} />
+          </ShareButton>
+          <EtcButtons>
+            <EtcButton onClick={handleReplay}>{'<< 다시 하기'}</EtcButton>
+            <EtcButton onClick={() => navigate('/results')}>{'전체 결과 >>'}</EtcButton>
+          </EtcButtons>
         </ResultBox>
       </ResultContainer>
     </ThemeProvider>
@@ -81,16 +85,13 @@ const ResultContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  /* width: 100vw; */
-  position: relative;
   color: white;
 `;
 
 const ResultBox = styled.div`
   text-align: center;
   width: 350px;
-  padding: 10px;
+  padding: 10px 0px;
   overflow-y: auto;
   &::-webkit-scrollbar {
     display: none;
@@ -98,38 +99,32 @@ const ResultBox = styled.div`
 `;
 
 const ImgWrapper = styled.section`
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   display: flex;
-  margin: 30px auto;
+  margin: 15px auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #fff;
   border-radius: 50%;
   box-shadow:
-    0 0 15px #fff,
-    0 0 15px ${props => props.theme.mainColor};
+    0px 0px 15px #bf8df2,
+    0px 0px 15px #df7abe;
 `;
 
 const ResultImg = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
 `;
 
 const Title = styled.h2`
   margin: 5px 0px;
+  padding-top: 5px;
   font-weight: 700;
   text-shadow:
-    0 0 3px ${props => props.theme.mainColor},
-    0 0 3px ${props => props.theme.purpleColor};
-`;
-
-const Sub = styled.h3`
-  margin-bottom: 10px;
-  text-shadow:
-    0 0 3px ${props => props.theme.mainColor},
-    0 0 3px ${props => props.theme.purpleColor};
+    0px 0px 3px #df7abe,
+    0px 0px 3px #bf8df2;
 `;
 
 const Desc = styled.section`
@@ -139,30 +134,42 @@ const Desc = styled.section`
   text-align: center;
   font-size: 14px;
   line-height: 1.5;
-  text-shadow: 0 0 3px ${props => props.theme.purpleColor};
-  padding: 10px 0;
+  text-shadow: 0px 0px 3px #df7abe;
 `;
 
 const MatchWrapper = styled.div`
-  width: 300px;
-  margin: 5px auto;
+  margin: 0px auto;
+  margin-bottom: 10px;
+  height: 130px;
   display: flex;
-  padding: 5px 0px;
-  text-shadow:
-    0 0 1px #fff,
-    0 0 1px ${props => props.theme.mainColor};
+  align-items: center;
+`;
+
+const MatchResult = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 0px auto;
+`;
+
+const MatchImgWrapper = styled.section`
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow:
+    0px 0px 15px #bf8df2,
+    0px 0px 15px #df7abe;
 `;
 
 const MatchImg = styled.img`
-  background-color: white;
-  box-shadow:
-    0 0 5px #fff,
-    0 0 5px ${props => props.theme.mainColor};
-  height: 80px;
-  width: 80px;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 20%;
+  width: 40px;
+  height: 40px;
 `;
 
 const MatchInfo = styled.div`
@@ -170,75 +177,29 @@ const MatchInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto 0;
-  width: 70%;
-`;
-
-const Match = styled.div`
-  height: 50px;
-  line-height: 70px;
-  font-size: 20px;
+  gap: 5px;
   font-weight: 700;
 `;
 
-const MatchName = styled.div`
-  height: 50px;
-  line-height: 30px;
+const Match = styled.div`
+  font-size: 14px;
 `;
 
-const Buttons = styled.section`
+const ShareButton = styled.div`
+  padding: 20px 0px;
+`;
+
+const EtcButtons = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 10px;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 14px;
 `;
 
-const BaseButton = styled.button`
+const EtcButton = styled(EtcButtons)`
   border: none;
-  background-color: transparent;
-  color: white;
-  padding-top: 30px;
-  font-family: 'Heir of Light';
   cursor: pointer;
-`;
-
-const ReButton = styled(BaseButton)``;
-
-const ShareButton = styled(BaseButton)`
-  position: relative;
-`;
-
-const ShareMenu = styled.div`
-  width: 120px;
-  height: 40px;
-  padding: 5px;
-  background-color: white;
-  border-radius: 25px;
-  position: absolute;
-  top: -15px;
-  right: 0px;
-  display: flex;
-  justify-content: space-around;
-  color: red;
-  cursor: pointer;
-`;
-
-const ShareButtons = styled.button`
-  border: none;
-  border-radius: 25px;
-  padding: 5px;
-  cursor: pointer;
-  ${({ color }) => `background-color: ${color};`};
-`;
-
-const KaKaoButton = styled(ShareButtons)`
-  background-color: red;
-`;
-
-const LinkButton = styled(ShareButtons)`
-  background-color: blue;
-`;
-
-const SaveButton = styled(ShareButtons)`
-  background-color: yellow;
 `;
 
 export default Result;
