@@ -8,6 +8,7 @@ import Questions from './pages/Questions';
 import Result from './pages/Result';
 import { RecoilRoot } from 'recoil';
 import Results from './pages/Results';
+import Error from './pages/Error';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -56,6 +57,7 @@ function App() {
             <Route path="/questions" element={<Questions />} />
             <Route path="/result/:testResult" element={<Result />} />
             <Route path="/results" element={<Results />} />
+            <Route path="/*" element={<Error />} />
           </Routes>
         </BrowserRouter>
       </AppContainer>
@@ -85,7 +87,7 @@ const MusicPlayer = styled.div`
   background-color: white;
   border-radius: 25px;
   margin: 10px;
-  box-shadow: 0 0 10px #fff;
+  box-shadow: 0 0 10px #df7abe;
   cursor: pointer;
 `;
 
