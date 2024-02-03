@@ -42,9 +42,9 @@ const Main = styled.div`
 
 const Title = styled.div`
   font-size: 30px;
-  color: white;
+  color: #ffffff;
   text-align: center;
-  text-shadow: 0 0 10px #fff;
+  text-shadow: 0 0 5px #17bbd4;
   font-weight: 700;
   padding-bottom: 50px;
 
