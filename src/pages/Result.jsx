@@ -4,11 +4,13 @@ import { resultData } from '../data/resultData';
 import { MatchData } from '../data/resultData';
 import { KatalkButton, LinkButton } from '../stories/Button.stories';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Result = () => {
   const { testResult } = useParams();
   const navigate = useNavigate();
+
+  const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
 
   const validMbti = [
     'INFP',
@@ -37,6 +39,19 @@ const Result = () => {
 
   const handleReplay = () => {
     navigate('/');
+  };
+
+  const handleLinkModal = link => {
+    setIsLinkModalOpen(!isLinkModalOpen);
+    navigator.clipboard.writeText(link);
+
+    setTimeout(() => {
+      setIsLinkModalOpen(false);
+    }, '2000');
+  };
+
+  const handleCloseLinkModal = () => {
+    setIsLinkModalOpen(false);
   };
 
   return (
@@ -68,17 +83,50 @@ const Result = () => {
           </MatchWrapper>
           <ShareButton>
             <KatalkButton label={'카카오톡 공유하기'} />
-            <LinkButton label={'링크 복사하기'} />
+            <LinkButton
+              onClick={() => handleLinkModal(window.location.href)}
+              label={'링크 복사하기'}
+            />
           </ShareButton>
           <EtcButtons>
             <EtcButton onClick={handleReplay}>{'<< 다시 하기'}</EtcButton>
             <EtcButton onClick={() => navigate('/results')}>{'전체 결과 >>'}</EtcButton>
           </EtcButtons>
+          {isLinkModalOpen && (
+            <ModalBackdrop onClick={handleCloseLinkModal}>
+              <ShareModal>
+                <p>복사 완료!</p>
+              </ShareModal>
+            </ModalBackdrop>
+          )}
         </ResultBox>
       </ResultContainer>
     </ThemeProvider>
   );
 };
+
+const ModalBackdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ShareModal = styled.div`
+  background-color: white;
+  box-shadow: 0 0 10px #df7abe;
+  border-radius: 3px;
+  padding: 20px;
+  z-index: 100;
+  width: 150px;
+  font-weight: 700;
+  color: black;
+`;
 
 const ResultContainer = styled.div`
   display: flex;
