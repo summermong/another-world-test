@@ -54,6 +54,39 @@ const Result = () => {
     setIsLinkModalOpen(false);
   };
 
+  console.log(window.location.href);
+
+  const handleKaTalkShare = async () => {
+    if (window.Kakao) {
+      const kakao = window.Kakao;
+      if (!kakao.isInitialized()) {
+        kakao.init(import.meta.env.VITE_KAKAOTALK_APP_KEY);
+      }
+
+      kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: `${resultData[testResult]?.title}`,
+          description: '이세계에서의 직업을 확인해보세요!',
+          imageUrl: `${resultData[testResult]?.src}`,
+          link: {
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
+        },
+        buttons: [
+          {
+            title: '직업 확인하기',
+            link: {
+              mobileWebUrl: window.location.href,
+              webUrl: window.location.href,
+            },
+          },
+        ],
+      });
+    }
+  };
+
   return (
     <ThemeProvider theme={themes}>
       <ResultContainer>
@@ -82,7 +115,7 @@ const Result = () => {
             </MatchResult>
           </MatchWrapper>
           <ShareButton>
-            <KatalkButton label={'카카오톡 공유하기'} />
+            <KatalkButton onClick={handleKaTalkShare} label={'카카오톡 공유하기'} />
             <LinkButton
               onClick={() => handleLinkModal(window.location.href)}
               label={'링크 복사하기'}
