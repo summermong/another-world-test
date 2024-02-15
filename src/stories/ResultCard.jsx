@@ -10,6 +10,10 @@ const ResultCard = styled.div`
   color: white;
   align-items: center;
   justify-content: space-between;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const ImgWrapper = styled.section`
