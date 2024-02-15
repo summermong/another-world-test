@@ -14,7 +14,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const music = useMemo(() => {
-    const audio = new Audio('./music/ost.mp3');
+    const audio = new Audio('/music/ost.mp3');
     audio.loop = true;
     return audio;
   }, []);
