@@ -54,8 +54,6 @@ const Result = () => {
     setIsLinkModalOpen(false);
   };
 
-  console.log(window.location.href);
-
   const handleKaTalkShare = async () => {
     if (window.Kakao) {
       const kakao = window.Kakao;
