@@ -66,7 +66,7 @@ const Result = () => {
         content: {
           title: `${resultData[testResult]?.title}`,
           description: '이세계에서의 직업을 확인해보세요!',
-          imageUrl: `${resultData[testResult]?.src}`,
+          imageUrl: `${import.meta.env.VITE_WEBSITE_URL}${resultData[testResult]?.src}`,
           link: {
             mobileWebUrl: window.location.href,
             webUrl: window.location.href,
