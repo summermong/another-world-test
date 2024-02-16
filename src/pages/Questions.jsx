@@ -26,7 +26,7 @@ const Questions = () => {
 
   const boxVariants = {
     entry: back => ({
-      x: back ? 300 : -300,
+      x: back ? -300 : 300,
       opacity: 0,
       transition: { duration: 0.5 },
       scale: 0.8,
@@ -38,7 +38,7 @@ const Questions = () => {
       scale: 1,
     },
     exit: back => ({
-      x: back ? -300 : 300,
+      x: back ? 300 : -300,
       opacity: 0,
       scale: 0.8,
       transition: { duration: 0.5 },
@@ -127,7 +127,7 @@ const Questions = () => {
             </QuestionBox>
 
             <BarAndPrevWrapper>
-              <PreButton onClick={handlePrevQ}>◀️</PreButton>
+              <PreButton onClick={handlePrevQ}>{'◀️'}</PreButton>
               <ProgressBar>
                 <Progress width={width}>
                   {width === 0 ? '' : ((width / 250) * 100).toFixed(0) + '%'}
