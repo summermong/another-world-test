@@ -4,7 +4,8 @@ import { resultData } from '../data/resultData';
 import { MatchData } from '../data/resultData';
 import { KatalkButton, LinkButton } from '../stories/Button.stories';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import Adfit from '../hook/Adfit';
 
 const Result = () => {
   const { testResult } = useParams();
@@ -123,6 +124,7 @@ const Result = () => {
             <EtcButton onClick={handleReplay}>{'<< 다시 하기'}</EtcButton>
             <EtcButton onClick={() => navigate('/results')}>{'전체 결과 >>'}</EtcButton>
           </EtcButtons>
+
           {isLinkModalOpen && (
             <ModalBackdrop onClick={handleCloseLinkModal}>
               <ShareModal>
@@ -130,6 +132,7 @@ const Result = () => {
               </ShareModal>
             </ModalBackdrop>
           )}
+          <Adfit unit={'DAN-rjWFQP1lygxFUCzt'} width={320} height={50} />
         </ResultBox>
       </ResultContainer>
     </ThemeProvider>
