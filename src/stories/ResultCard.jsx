@@ -56,7 +56,7 @@ const PersonalityCard = ({ src, title, sub, onClick }) => {
   return (
     <ResultCard onClick={onClick}>
       <ImgWrapper>
-        <ResultImg src={src} />
+        <ResultImg src={src} alt={title} />
       </ImgWrapper>
       <ResultInfo>
         <ResultTitle>{title}</ResultTitle>

@@ -49,7 +49,7 @@ function App() {
       <AppContainer>
         <BrowserRouter basename="/">
           <MusicPlayer>
-            <Music src={getMusicIcon()} onClick={handleMusicStart} />
+            <Music src={getMusicIcon()} onClick={handleMusicStart} alt="음악 플레이어 아이콘" />
           </MusicPlayer>
           <GlobalStyles />
           <Routes>

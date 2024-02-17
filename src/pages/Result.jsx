@@ -91,14 +91,17 @@ const Result = () => {
       <ResultContainer>
         <ResultBox>
           <ImgWrapper>
-            <ResultImg src={resultData[testResult]?.src} />
+            <ResultImg src={resultData[testResult]?.src} alt={`${resultData[testResult]?.title}`} />
           </ImgWrapper>
           <Title>{resultData[testResult]?.title}</Title>
           <Desc>{resultData[testResult]?.desc}</Desc>
           <MatchWrapper>
             <MatchResult>
               <MatchImgWrapper>
-                <MatchImg src={`${MatchData[testResult]?.good.src}`} />
+                <MatchImg
+                  src={`${MatchData[testResult]?.good.src}`}
+                  alt={`${MatchData[testResult]?.good.title}`}
+                />
               </MatchImgWrapper>
               <MatchInfo>
                 <Match> ❤️ {MatchData[testResult]?.good.title} </Match>
@@ -106,7 +109,10 @@ const Result = () => {
             </MatchResult>
             <MatchResult>
               <MatchImgWrapper>
-                <MatchImg src={`${MatchData[testResult]?.bad.src}`} />
+                <MatchImg
+                  src={`${MatchData[testResult]?.bad.src}`}
+                  alt={`${MatchData[testResult]?.bad.title}`}
+                />
               </MatchImgWrapper>
               <MatchInfo>
                 <Match> 💔 {MatchData[testResult]?.bad.title} </Match>
