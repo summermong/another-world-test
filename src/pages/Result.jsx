@@ -1,4 +1,4 @@
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 import themes from '../style/themes';
 import { resultData } from '../data/resultData';
 import { MatchData } from '../data/resultData';
@@ -87,61 +87,59 @@ const Result = () => {
   };
 
   return (
-    <ThemeProvider theme={themes}>
-      <ResultContainer>
-        <ResultBox>
-          <ImgWrapper>
-            <ResultImg src={resultData[testResult]?.src} alt={`${resultData[testResult]?.title}`} />
-          </ImgWrapper>
-          <Title>{resultData[testResult]?.title}</Title>
-          <Desc>{resultData[testResult]?.desc}</Desc>
-          <MatchWrapper>
-            <MatchResult>
-              <MatchImgWrapper>
-                <MatchImg
-                  src={`${MatchData[testResult]?.good.src}`}
-                  alt={`${MatchData[testResult]?.good.title}`}
-                />
-              </MatchImgWrapper>
-              <MatchInfo>
-                <Match> ❤️ {MatchData[testResult]?.good.title} </Match>
-              </MatchInfo>
-            </MatchResult>
-            <MatchResult>
-              <MatchImgWrapper>
-                <MatchImg
-                  src={`${MatchData[testResult]?.bad.src}`}
-                  alt={`${MatchData[testResult]?.bad.title}`}
-                />
-              </MatchImgWrapper>
-              <MatchInfo>
-                <Match> 💔 {MatchData[testResult]?.bad.title} </Match>
-              </MatchInfo>
-            </MatchResult>
-          </MatchWrapper>
-          <ShareButton>
-            <KatalkButton onClick={handleKaTalkShare} label={'카카오톡 공유하기'} />
-            <LinkButton
-              onClick={() => handleLinkModal(window.location.href)}
-              label={'링크 복사하기'}
-            />
-          </ShareButton>
-          <EtcButtons>
-            <EtcButton onClick={handleReplay}>{'<< 다시 하기'}</EtcButton>
-            <EtcButton onClick={() => navigate('/results')}>{'전체 결과 >>'}</EtcButton>
-          </EtcButtons>
+    <ResultContainer>
+      <ResultBox>
+        <ImgWrapper>
+          <ResultImg src={resultData[testResult]?.src} alt={`${resultData[testResult]?.title}`} />
+        </ImgWrapper>
+        <Title>{resultData[testResult]?.title}</Title>
+        <Desc>{resultData[testResult]?.desc}</Desc>
+        <MatchWrapper>
+          <MatchResult>
+            <MatchImgWrapper>
+              <MatchImg
+                src={`${MatchData[testResult]?.good.src}`}
+                alt={`${MatchData[testResult]?.good.title}`}
+              />
+            </MatchImgWrapper>
+            <MatchInfo>
+              <Match> ❤️ {MatchData[testResult]?.good.title} </Match>
+            </MatchInfo>
+          </MatchResult>
+          <MatchResult>
+            <MatchImgWrapper>
+              <MatchImg
+                src={`${MatchData[testResult]?.bad.src}`}
+                alt={`${MatchData[testResult]?.bad.title}`}
+              />
+            </MatchImgWrapper>
+            <MatchInfo>
+              <Match> 💔 {MatchData[testResult]?.bad.title} </Match>
+            </MatchInfo>
+          </MatchResult>
+        </MatchWrapper>
+        <ShareButton>
+          <KatalkButton onClick={handleKaTalkShare} label={'카카오톡 공유하기'} />
+          <LinkButton
+            onClick={() => handleLinkModal(window.location.href)}
+            label={'링크 복사하기'}
+          />
+        </ShareButton>
+        <EtcButtons>
+          <EtcButton onClick={handleReplay}>{'<< 다시 하기'}</EtcButton>
+          <EtcButton onClick={() => navigate('/results')}>{'전체 결과 >>'}</EtcButton>
+        </EtcButtons>
 
-          {isLinkModalOpen && (
-            <ModalBackdrop onClick={handleCloseLinkModal}>
-              <ShareModal>
-                <p>복사 완료!</p>
-              </ShareModal>
-            </ModalBackdrop>
-          )}
-          <Adfit unit={'DAN-rjWFQP1lygxFUCzt'} width={320} height={50} />
-        </ResultBox>
-      </ResultContainer>
-    </ThemeProvider>
+        {isLinkModalOpen && (
+          <ModalBackdrop onClick={handleCloseLinkModal}>
+            <ShareModal>
+              <p>복사 완료!</p>
+            </ShareModal>
+          </ModalBackdrop>
+        )}
+        <Adfit unit={'DAN-rjWFQP1lygxFUCzt'} width={320} height={50} />
+      </ResultBox>
+    </ResultContainer>
   );
 };
 
@@ -159,7 +157,7 @@ const ModalBackdrop = styled.div`
 
 const ShareModal = styled.div`
   background-color: white;
-  box-shadow: 0 0 10px #df7abe;
+  box-shadow: 0 0 10px ${themes.pinkColor};
   border-radius: 3px;
   padding: 20px;
   z-index: 100;
@@ -194,11 +192,11 @@ const ImgWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: white;
   border-radius: 50%;
   box-shadow:
-    0px 0px 15px #bf8df2,
-    0px 0px 15px #df7abe;
+    0px 0px 15px ${themes.purpleColor},
+    0px 0px 15px ${themes.pinkColor};
 `;
 
 const ResultImg = styled.img`
@@ -211,8 +209,8 @@ const Title = styled.h2`
   padding-top: 5px;
   font-weight: 700;
   text-shadow:
-    0px 0px 3px #df7abe,
-    0px 0px 3px #bf8df2;
+    0px 0px 3px ${themes.pinkColor},
+    0px 0px 3px ${themes.purpleColor};
 `;
 
 const Desc = styled.section`
@@ -222,7 +220,7 @@ const Desc = styled.section`
   text-align: center;
   font-size: 14px;
   line-height: 1.5;
-  text-shadow: 0px 0px 3px #df7abe;
+  text-shadow: 0px 0px 3px ${themes.pinkColor};
 `;
 
 const MatchWrapper = styled.div`
@@ -248,11 +246,11 @@ const MatchImgWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: white;
   border-radius: 50%;
   box-shadow:
-    0px 0px 15px #bf8df2,
-    0px 0px 15px #df7abe;
+    0px 0px 15px ${themes.purpleColor},
+    0px 0px 15px ${themes.pinkColor};
 `;
 
 const MatchImg = styled.img`

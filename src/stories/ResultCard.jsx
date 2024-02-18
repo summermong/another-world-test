@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import themes from '../style/themes';
 
 const ResultCard = styled.div`
   width: 310px;
@@ -24,11 +25,11 @@ const ImgWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: white;
   border-radius: 50%;
   box-shadow:
-    0px 0px 15px #bf8df2,
-    0px 0px 15px #df7abe;
+    0px 0px 15px ${themes.purpleColor},
+    0px 0px 15px ${themes.pinkColor};
 `;
 
 const ResultImg = styled.img`
@@ -49,7 +50,7 @@ const ResultInfo = styled.div`
 const ResultTitle = styled.div`
   font-size: 16px;
   font-weight: 700;
-  text-shadow: 0px 0px 3px #df7abe;
+  text-shadow: 0px 0px 3px ${themes.pinkColor};
 `;
 
 const PersonalityCard = ({ src, title, sub, onClick }) => {

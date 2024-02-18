@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GlobalStyles from './style/GlobalStyles';
-import styled from 'styled-components';
+import themes from './style/themes';
+import styled, { ThemeProvider } from 'styled-components';
 
 import Start from './pages/Start';
 import Questions from './pages/Questions';
@@ -52,13 +53,15 @@ function App() {
             <Music src={getMusicIcon()} onClick={handleMusicStart} alt="음악 플레이어 아이콘" />
           </MusicPlayer>
           <GlobalStyles />
-          <Routes>
-            <Route path="/" element={<Start />} />
-            <Route path="/questions" element={<Questions />} />
-            <Route path="/result/:testResult" element={<Result />} />
-            <Route path="/results" element={<Results />} />
-            <Route path="/*" element={<Error />} />
-          </Routes>
+          <ThemeProvider theme={themes}>
+            <Routes>
+              <Route path="/" element={<Start />} />
+              <Route path="/questions" element={<Questions />} />
+              <Route path="/result/:testResult" element={<Result />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/*" element={<Error />} />
+            </Routes>
+          </ThemeProvider>
         </BrowserRouter>
       </AppContainer>
     </RecoilRoot>
@@ -87,7 +90,7 @@ const MusicPlayer = styled.div`
   background-color: white;
   border-radius: 25px;
   margin: 10px;
-  box-shadow: 0 0 10px #df7abe;
+  box-shadow: 0 0 10px ${themes.pinkColor};
   cursor: pointer;
 `;
 

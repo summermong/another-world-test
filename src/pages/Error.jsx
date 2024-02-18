@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import themes from '../style/themes';
 import { useNavigate } from 'react-router-dom';
 import { StartButton } from '../stories/Button.stories';
 
@@ -20,7 +21,7 @@ const ErrorPageContainer = styled.div`
   justify-content: center;
   gap: 20px;
   color: white;
-  text-shadow: 0 0 5px #df7abe;
+  text-shadow: 0 0 5px ${themes.mintColor};
 `;
 
 export default Error;

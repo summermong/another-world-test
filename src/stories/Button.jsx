@@ -1,5 +1,19 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import themes from '../style/themes';
+
+const Button = ({ backgroundColor, size, label, onClick }) => {
+  return (
+    <StyledButton
+      type="button"
+      className={`storybook-button--${size}`}
+      style={backgroundColor && { backgroundColor }}
+      onClick={onClick}
+    >
+      {label}
+    </StyledButton>
+  );
+};
 
 const StyledButton = styled.button`
   font-family: 'Heir of Light';
@@ -10,7 +24,7 @@ const StyledButton = styled.button`
   display: inline-block;
   line-height: 1;
   color: black;
-  box-shadow: 0 0 10px #df7abe;
+  box-shadow: 0 0 10px ${themes.pinkColor};
 
   &.storybook-button--choice {
     font-size: 12px;
@@ -29,25 +43,13 @@ const StyledButton = styled.button`
     font-size: 16px;
     padding: 12px 24px;
     width: 200px;
+    margin: 30px;
   }
 
   &:hover {
-    box-shadow: 0 0 15px #df7abe;
+    box-shadow: 0 0 15px ${themes.pinkColor};
   }
 `;
-
-const Button = ({ backgroundColor, size, label, onClick }) => {
-  return (
-    <StyledButton
-      type="button"
-      className={`storybook-button--${size}`}
-      style={backgroundColor && { backgroundColor }}
-      onClick={onClick}
-    >
-      {label}
-    </StyledButton>
-  );
-};
 
 Button.propTypes = {
   backgroundColor: PropTypes.string,

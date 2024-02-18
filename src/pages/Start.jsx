@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import themes from '../style/themes';
 import { StartButton } from '../stories/Button.stories';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,8 +14,8 @@ const Start = () => {
     <MainContainer>
       <Main>
         <Title>
-          눈을 떴더니<p></p>
-          <span>이세계</span>의 뭔가가<p></p>되어버린 <span>나!?</span>
+          눈을 떴더니<div></div>
+          <span>이세계</span>의 뭔가가<div></div>되어버린 <span>나!?</span>
         </Title>
         <StartButton label={'시작하기'} onClick={goToQuestion} />
       </Main>
@@ -42,15 +43,14 @@ const Main = styled.div`
 
 const Title = styled.div`
   font-size: 30px;
-  color: #ffffff;
+  color: white;
   text-align: center;
-  text-shadow: 0 0 5px #17bbd4;
+  text-shadow: 0 0 5px ${themes.mintColor};
   font-weight: 700;
-  padding-bottom: 50px;
 
   span {
     font-size: 45px;
-    text-shadow: 0 0 10px #df7abe;
+    text-shadow: 0 0 10px ${themes.pinkColor};
   }
 `;
 

@@ -1,6 +1,6 @@
 const themes = {
-  mainColor: '#DF7ABE',
-  pointColor: '#D9A7D5',
+  pinkColor: '#DF7ABE',
+  mintColor: '#17BBD4',
   purpleColor: '#BF8DF2',
 };
 

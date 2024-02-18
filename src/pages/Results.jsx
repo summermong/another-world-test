@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import themes from '../style/themes';
 import PersonalityCard from '../stories/ResultCard';
 import { resultData } from '../data/resultData';
 import { useNavigate } from 'react-router-dom';
@@ -43,8 +44,8 @@ const ResultContainer = styled.div`
 const Title = styled.h1`
   font-weight: 700;
   text-shadow:
-    0px 0px 3px #df7abe,
-    0px 0px 3px #bf8df2;
+    0px 0px 3px ${themes.pinkColor},
+    0px 0px 3px ${themes.purpleColor};
   color: white;
   padding: 10px;
   margin-top: 20px;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import themes from '../style/themes';
 import { ChoiceButton } from '../stories/Button.stories';
 import questionData from '../data/questionData';
 import { useNavigate } from 'react-router-dom';
@@ -103,7 +104,7 @@ const Questions = () => {
           <LoadingSpinner>
             이세계로 로딩중...
             <BarLoader
-              color="#bf8df2"
+              color={themes.purpleColor}
               height="10px"
               width="250px"
               loading={setIsLoadingOpen}
@@ -160,7 +161,7 @@ const LoadingSpinner = styled.div`
   flex-direction: column;
   gap: 20px;
   font-weight: 700;
-  text-shadow: 0 0 10px #bf8df2;
+  text-shadow: 0 0 10px ${themes.purpleColor};
 `;
 
 const QuestionContainer = styled.div`
@@ -181,7 +182,7 @@ const QuestionBox = styled.div`
   gap: 20px;
   align-items: center;
   font-size: 16px;
-  text-shadow: 0 0 10px #17bbd4;
+  text-shadow: 0 0 10px ${themes.mintColor};
 `;
 
 const QuestionNum = styled.div`
@@ -200,9 +201,9 @@ const BarAndPrevWrapper = styled.div`
 const ProgressBar = styled.div`
   width: 250px;
   height: 20px;
-  background-color: #fff;
+  background-color: white;
   border-radius: 50px;
-  box-shadow: 0 0 10px #df7abe;
+  box-shadow: 0 0 10px ${themes.pinkColor};
   margin: 20px 0px;
   font-size: 12px;
 `;
@@ -210,20 +211,20 @@ const ProgressBar = styled.div`
 const PreButton = styled.button`
   color: white;
   background: transparent;
-  text-shadow: 0 0 10px #df7abe;
+  text-shadow: 0 0 10px ${themes.pinkColor};
   border: none;
   font-size: 20px;
   cursor: pointer;
 
   &:hover {
-    color: #bf8df2;
+    color: ${themes.purpleColor};
   }
 `;
 
 const Progress = styled.div`
   width: ${props => props.width}px;
   height: 20px;
-  background-color: #bf8df2;
+  background-color: ${themes.purpleColor};
   border-radius: 50px;
   display: flex;
   text-align: center;
