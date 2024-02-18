@@ -16,7 +16,6 @@ const Button = ({ backgroundColor, size, label, onClick }) => {
 };
 
 const StyledButton = styled.button`
-  font-family: 'Heir of Light';
   font-weight: 700;
   border: 0;
   border-radius: 3rem;
