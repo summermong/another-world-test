@@ -7,7 +7,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import Start from './pages/Start';
 import Questions from './pages/Questions';
 import Result from './pages/Result';
-import { RecoilRoot } from 'recoil';
 import Results from './pages/Results';
 import Error from './pages/Error';
 
@@ -46,25 +45,23 @@ function App() {
   }, [music]);
 
   return (
-    <RecoilRoot>
-      <AppContainer>
-        <BrowserRouter basename="/">
-          <MusicPlayer>
-            <Music src={getMusicIcon()} onClick={handleMusicStart} alt="음악 플레이어 아이콘" />
-          </MusicPlayer>
-          <GlobalStyles />
-          <ThemeProvider theme={themes}>
-            <Routes>
-              <Route path="/" element={<Start />} />
-              <Route path="/questions" element={<Questions />} />
-              <Route path="/result/:testResult" element={<Result />} />
-              <Route path="/results" element={<Results />} />
-              <Route path="/*" element={<Error />} />
-            </Routes>
-          </ThemeProvider>
-        </BrowserRouter>
-      </AppContainer>
-    </RecoilRoot>
+    <AppContainer>
+      <BrowserRouter basename="/">
+        <MusicPlayer>
+          <Music src={getMusicIcon()} onClick={handleMusicStart} alt="음악 플레이어 아이콘" />
+        </MusicPlayer>
+        <GlobalStyles />
+        <ThemeProvider theme={themes}>
+          <Routes>
+            <Route path="/" element={<Start />} />
+            <Route path="/questions" element={<Questions />} />
+            <Route path="/result/:testResult" element={<Result />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/*" element={<Error />} />
+          </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
+    </AppContainer>
   );
 }
 
