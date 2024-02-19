@@ -11,8 +11,9 @@ const GlobalStyles = createGlobalStyle`
 body {
   width: 100vw;
   height: 100vh;
-  background-image: url('/img/background/background.jpeg');
+  background-image: url('/img/background/background.webp');
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center center;
   position: relative;
 }
@@ -24,7 +25,7 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.55); 
+  background-color: rgba(0, 0, 0, 0.55);
 }
 `;
 
