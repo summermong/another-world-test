@@ -65,10 +65,7 @@ const Result = () => {
   };
 
   const handleKaTalkShare = async () => {
-    alert('카카오 없음');
-
     if (window.Kakao) {
-      alert('카카오 있음');
       const kakao = window.Kakao;
       const kakaoAPI = import.meta.env.VITE_KAKAOTALK_APP_KEY;
 
