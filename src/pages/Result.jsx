@@ -75,7 +75,7 @@ const Result = () => {
 
       if (!Kakao.isInitialized()) {
         alert('await');
-        Kakao.init(kakaoAPI);
+        await new Promise(resolve => Kakao.init(kakaoAPI, resolve));
       }
 
       Kakao.Link.sendDefault({
