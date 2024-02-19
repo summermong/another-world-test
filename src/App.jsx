@@ -71,7 +71,7 @@ const AppContainer = styled.div`
   height: 100vh;
   justify-content: center;
   position: relative;
-  font-family: HeirofLightOTFRegular;
+  font-family: 'Heir of Light';
 `;
 
 const MusicPlayer = styled.div`
