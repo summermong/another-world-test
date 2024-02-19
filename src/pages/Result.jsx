@@ -36,6 +36,15 @@ const Result = () => {
     if (!testResult || !validMbti.includes(testResult)) {
       navigate('/error');
     }
+
+    const script = document.createElement('script');
+    script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+    script.async = false;
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      handleKaTalkShare();
+    };
   }, []);
 
   const handleReplay = () => {
