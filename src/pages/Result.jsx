@@ -65,15 +65,20 @@ const Result = () => {
   };
 
   const handleKaTalkShare = async () => {
+    alert('카카오 없음');
+
     if (window.Kakao) {
-      const kakao = window.Kakao;
+      alert('카카오 있음');
+
+      const Kakao = window.Kakao;
+
       const kakaoAPI = import.meta.env.VITE_KAKAOTALK_APP_KEY;
 
-      if (!kakao.isInitialized()) {
-        await new Promise(resolve => kakao.init(kakaoAPI, resolve));
+      if (!Kakao.isInitialized()) {
+        await new Promise(resolve => Kakao.init(kakaoAPI, resolve));
       }
 
-      kakao.Link.sendDefault({
+      Kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
           title: `${resultData[testResult]?.title}`,
