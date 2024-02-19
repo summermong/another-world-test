@@ -64,8 +64,6 @@ const Result = () => {
     setIsLinkModalOpen(false);
   };
 
-  console.log(window.location);
-
   const handleKaTalkShare = async () => {
     alert('카카오 없음');
 
