@@ -58,8 +58,10 @@ const Result = () => {
   const handleKaTalkShare = async () => {
     if (window.Kakao) {
       const kakao = window.Kakao;
+      const kakaoAPI = import.meta.env.VITE_KAKAOTALK_APP_KEY;
+
       if (!kakao.isInitialized()) {
-        kakao.init(import.meta.env.VITE_KAKAOTALK_APP_KEY);
+        await new Promise(resolve => kakao.init(kakaoAPI, resolve));
       }
 
       kakao.Link.sendDefault({
