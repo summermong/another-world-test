@@ -74,8 +74,8 @@ const Result = () => {
           description: '이세계에서의 직업을 확인해보세요!11',
           imageUrl: `${import.meta.env.VITE_WEBSITE_URL}/img/result/pra.png`,
 
-          imageWidth: 300,
-          imageHeight: 300,
+          imageWidth: 200,
+          imageHeight: 200,
           link: {
             mobileWebUrl: window.location.href,
             webUrl: window.location.href,
