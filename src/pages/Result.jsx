@@ -74,12 +74,9 @@ const Result = () => {
         content: {
           title: `${resultData[testResult]?.title}`,
           description: '이세계에서의 직업을 확인해보세요!',
-          imageUrl: `${import.meta.env.VITE_WEBSITE_URL}/img/thumbnail/${
-            resultData[testResult]?.src
-          }`,
-
-          imageWidth: 200,
-          imageHeight: 200,
+          imageUrl: `${import.meta.env.VITE_WEBSITE_URL}/img/thumbnail/${testResult}.png`,
+          imageWidth: 300,
+          imageHeight: 300,
           link: {
             mobileWebUrl: window.location.href,
             webUrl: window.location.href,
