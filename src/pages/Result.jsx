@@ -55,6 +55,9 @@ const Result = () => {
     setIsLinkModalOpen(false);
   };
 
+  console.log(`${import.meta.env.VITE_WEBSITE_URL}/img/result/pra.png`);
+  console.log(`${import.meta.env.VITE_WEBSITE_URL}${resultData[testResult]?.src}`);
+
   const handleKaTalkShare = async () => {
     if (window.Kakao) {
       const Kakao = window.Kakao;
@@ -68,8 +71,11 @@ const Result = () => {
         objectType: 'feed',
         content: {
           title: `${resultData[testResult]?.title}`,
-          description: '이세계에서의 직업을 확인해보세요!',
-          imageUrl: `${import.meta.env.VITE_WEBSITE_URL}${resultData[testResult]?.src}`,
+          description: '이세계에서의 직업을 확인해보세요!11',
+          imageUrl: `${import.meta.env.VITE_WEBSITE_URL}/img/result/pra.png`,
+
+          imageWidth: 300,
+          imageHeight: 300,
           link: {
             mobileWebUrl: window.location.href,
             webUrl: window.location.href,
