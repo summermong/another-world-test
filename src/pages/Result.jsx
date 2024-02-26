@@ -38,6 +38,8 @@ const Result = () => {
     }
   }, []);
 
+  console.log(testResult);
+
   const handleReplay = () => {
     navigate('/');
   };
@@ -55,7 +57,7 @@ const Result = () => {
     setIsLinkModalOpen(false);
   };
 
-  console.log(`${import.meta.env.VITE_WEBSITE_URL}/img/result/pra.png`);
+  console.log(`${import.meta.env.VITE_WEBSITE_URL}/img/thumbnail/${testResult}.png`);
   console.log(`${import.meta.env.VITE_WEBSITE_URL}${resultData[testResult]?.src}`);
 
   const handleKaTalkShare = async () => {
@@ -71,8 +73,10 @@ const Result = () => {
         objectType: 'feed',
         content: {
           title: `${resultData[testResult]?.title}`,
-          description: '이세계에서의 직업을 확인해보세요!11',
-          imageUrl: `${import.meta.env.VITE_WEBSITE_URL}/img/result/pra.png`,
+          description: '이세계에서의 직업을 확인해보세요!',
+          imageUrl: `${import.meta.env.VITE_WEBSITE_URL}/img/thumbnail/${
+            resultData[testResult]?.src
+          }`,
 
           imageWidth: 200,
           imageHeight: 200,
