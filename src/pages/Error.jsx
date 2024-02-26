@@ -22,6 +22,7 @@ const ErrorPageContainer = styled.div`
   gap: 20px;
   color: white;
   text-shadow: 0 0 5px ${themes.mintColor};
+  text-align: center;
 `;
 
 export default Error;
