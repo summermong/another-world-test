@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import themes from '../style/themes';
 import { StartButton } from '../stories/Button.stories';
 import { useNavigate } from 'react-router-dom';
-import SEOMetaTag from '../hook/SEOMetaTag';
 
 const Start = () => {
   const navigate = useNavigate();
@@ -20,24 +19,15 @@ const Start = () => {
   };
 
   return (
-    <>
-      <SEOMetaTag
-        title="이세계에서 나의 직업은?"
-        description="이세계에서 나의 직업은?"
-        keywords="MBTI"
-        imgsrc="/img/icon/ogImage.png"
-        url="https://another-world-test.vercel.app/"
-      />
-      <MainContainer>
-        <Main>
-          <Title>
-            눈을 떴더니<div></div>
-            <span>이세계</span>의 뭔가가<div></div>되어버린 <span>나!?</span>
-          </Title>
-          <StartButton label={'시작하기'} onClick={goToQuestion} />
-        </Main>
-      </MainContainer>
-    </>
+    <MainContainer>
+      <Main>
+        <Title>
+          눈을 떴더니<div></div>
+          <span>이세계</span>의 뭔가가<div></div>되어버린 <span>나!?</span>
+        </Title>
+        <StartButton label={'시작하기'} onClick={goToQuestion} />
+      </Main>
+    </MainContainer>
   );
 };
 

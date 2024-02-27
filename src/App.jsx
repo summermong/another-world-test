@@ -11,7 +11,6 @@ import ReactGA from 'react-ga4';
 
 import Results from './pages/Results';
 import Error from './pages/Error';
-import SEOMetaTag from './hook/SEOMetaTag';
 
 function App() {
   useEffect(() => {
@@ -68,7 +67,6 @@ function App() {
   return (
     <AppContainer>
       <BrowserRouter basename="/">
-        <SEOMetaTag />
         <MusicPlayer>
           <Music src={getMusicIcon()} onClick={handleMusicStart} alt="음악 플레이어 아이콘" />
         </MusicPlayer>

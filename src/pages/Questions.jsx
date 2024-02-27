@@ -6,7 +6,6 @@ import questionData from '../data/questionData';
 import { useNavigate } from 'react-router-dom';
 import BarLoader from 'react-spinners/BarLoader';
 import { motion, AnimatePresence } from 'framer-motion';
-import SEOMetaTag from '../hook/SEOMetaTag';
 
 const Questions = () => {
   const navigate = useNavigate();
@@ -100,13 +99,6 @@ const Questions = () => {
 
   return (
     <>
-      <SEOMetaTag
-        title="이세계에서 나의 직업은?"
-        description="이세계에서 나의 직업은?"
-        keywords="MBTI"
-        imgsrc="/img/icon/ogImage.png"
-        url="https://another-world-test.vercel.app/"
-      />
       <QuestionContainer>
         <AnimatePresence mode="wait" custom={back}>
           {isLoadingOpen ? (
