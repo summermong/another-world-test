@@ -1,3 +1,5 @@
+import { EventTrigger } from '../hook/gtag';
+
 import styled from 'styled-components';
 import themes from '../style/themes';
 import { StartButton } from '../stories/Button.stories';
@@ -8,6 +10,12 @@ const Start = () => {
 
   const goToQuestion = () => {
     navigate('/questions');
+    EventTrigger({
+      action: '테스트 시작하기',
+      category: 'test start',
+      label: '테스트 시작하기',
+      value: 1,
+    });
   };
 
   return (

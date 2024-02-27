@@ -7,10 +7,18 @@ import styled, { ThemeProvider } from 'styled-components';
 import Start from './pages/Start';
 import Questions from './pages/Questions';
 import Result from './pages/Result';
+import ReactGA from 'react-ga4';
+
 import Results from './pages/Results';
 import Error from './pages/Error';
 
 function App() {
+  useEffect(() => {
+    if (!window.location.href.includes('localhost')) {
+      ReactGA.initialize(`${import.meta.env.VITE_GA}`);
+    }
+  }, []);
+
   const [isPlaying, setIsPlaying] = useState(false);
 
   const music = useMemo(() => {
