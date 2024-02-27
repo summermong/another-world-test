@@ -4,31 +4,41 @@ import PersonalityCard from '../stories/ResultCard';
 import { resultData } from '../data/resultData';
 import { useNavigate } from 'react-router-dom';
 import Adfit from '../hook/Adfit';
+import SEOMetaTag from '../hook/SEOMetaTag';
 
 const Results = () => {
   const navigate = useNavigate('');
   return (
-    <ResultContainer>
-      <ResultList>
-        <Title>전체 결과</Title>
-        {Object.keys(resultData).map(key => {
-          const { src, title } = resultData[key];
-          return (
-            <PersonalityCard
-              key={key}
-              src={src}
-              title={title}
-              onClick={() => navigate(`/result/${key}`)}
-            />
-          );
-        })}
-        <EtcButtons>
-          <EtcButton onClick={() => navigate(-1)}>{'<< 뒤로 가기'}</EtcButton>
-          <EtcButton onClick={() => navigate('/')}>{'다시 하기 >>'}</EtcButton>
-        </EtcButtons>
-        <Adfit unit={'DAN-SGjklGCZThRETP4c'} width={320} height={100} />
-      </ResultList>
-    </ResultContainer>
+    <>
+      <SEOMetaTag
+        title="이세계에서 나의 직업은?"
+        description="이세계에서 나의 직업은?"
+        keywords="MBTI"
+        imgsrc="/img/icon/ogImage.png"
+        url="https://another-world-test.vercel.app/"
+      />
+      <ResultContainer>
+        <ResultList>
+          <Title>전체 결과</Title>
+          {Object.keys(resultData).map(key => {
+            const { src, title } = resultData[key];
+            return (
+              <PersonalityCard
+                key={key}
+                src={src}
+                title={title}
+                onClick={() => navigate(`/result/${key}`)}
+              />
+            );
+          })}
+          <EtcButtons>
+            <EtcButton onClick={() => navigate(-1)}>{'<< 뒤로 가기'}</EtcButton>
+            <EtcButton onClick={() => navigate('/')}>{'다시 하기 >>'}</EtcButton>
+          </EtcButtons>
+          <Adfit unit={'DAN-SGjklGCZThRETP4c'} width={320} height={100} />
+        </ResultList>
+      </ResultContainer>
+    </>
   );
 };
 
