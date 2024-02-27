@@ -11,6 +11,7 @@ import ReactGA from 'react-ga4';
 
 import Results from './pages/Results';
 import Error from './pages/Error';
+import SEOMetaTag from './hook/SEOMetaTag';
 
 function App() {
   useEffect(() => {
@@ -67,6 +68,13 @@ function App() {
   return (
     <AppContainer>
       <BrowserRouter basename="/">
+        <SEOMetaTag
+          title="이세계에서 나의 직업은?"
+          description="이세계에서 나의 직업은?"
+          keywords="MBTI"
+          imgsrc="/img/icon/ogImage.png"
+          url="https://another-world-test.vercel.app/"
+        />
         <MusicPlayer>
           <Music src={getMusicIcon()} onClick={handleMusicStart} alt="음악 플레이어 아이콘" />
         </MusicPlayer>
