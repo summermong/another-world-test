@@ -1,5 +1,5 @@
+import React from 'react';
 import { EventTrigger } from '../hook/gtag';
-
 import styled from 'styled-components';
 import themes from '../style/themes';
 import { StartButton } from '../stories/Button.stories';
