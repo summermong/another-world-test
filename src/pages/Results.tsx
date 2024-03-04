@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import themes from '../style/themes';
 import PersonalityCard from '../stories/ResultCard';
@@ -6,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Adfit from '../hook/Adfit';
 
 const Results = () => {
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
   return (
     <ResultContainer>
       <ResultList>

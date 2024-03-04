@@ -1,8 +1,25 @@
-import { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef, useEffect } from 'react';
 
-const Adfit = ({ unit, width, height }) => {
-  const scriptElement = useRef(null);
+interface AdfitProps {
+  unit: string;
+  width: number;
+  height: number;
+}
+
+interface Adfit {
+  display: (unit: string) => void;
+  destroy: (unit: string) => void;
+  refresh: (unit: string) => void;
+}
+
+declare global {
+  interface Window {
+    adfit?: Adfit;
+  }
+}
+
+const Adfit = ({ unit, width, height }: AdfitProps) => {
+  const scriptElement = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -11,7 +28,7 @@ const Adfit = ({ unit, width, height }) => {
     scriptElement.current?.appendChild(script);
 
     return () => {
-      const globalAdfit = window.adfit;
+      const globalAdfit = 'adfit' in window ? window.adfit : null;
       if (globalAdfit) globalAdfit.destroy(unit);
     };
   }, []);
@@ -27,12 +44,6 @@ const Adfit = ({ unit, width, height }) => {
       ></ins>
     </div>
   );
-};
-
-Adfit.propTypes = {
-  unit: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
 };
 
 export default Adfit;

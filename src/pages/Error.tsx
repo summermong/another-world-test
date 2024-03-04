@@ -1,10 +1,11 @@
+import React from 'react';
 import styled from 'styled-components';
 import themes from '../style/themes';
 import { useNavigate } from 'react-router-dom';
 import { StartButton } from '../stories/Button.stories';
 
 const Error = () => {
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
 
   return (
     <ErrorPageContainer>

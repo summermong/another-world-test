@@ -1,4 +1,10 @@
-export const resultData = {
+export interface ResultType {
+  src: string;
+  title: string;
+  desc: string;
+}
+
+export const resultData: Record<string, ResultType> = {
   ENFJ: {
     src: `/img/result/ENFJ.png`,
     title: '선을 위해 노력하는 사제',

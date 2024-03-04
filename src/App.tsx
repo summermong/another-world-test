@@ -11,6 +11,7 @@ import ReactGA from 'react-ga4';
 
 import Results from './pages/Results';
 import Error from './pages/Error';
+import React from 'react';
 
 function App() {
   useEffect(() => {

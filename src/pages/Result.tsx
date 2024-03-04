@@ -1,14 +1,39 @@
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import themes from '../style/themes';
 import { resultData } from '../data/resultData';
 import { MatchData } from '../data/resultData';
 import { KatalkButton, LinkButton } from '../stories/Button.stories';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import Adfit from '../hook/Adfit';
 
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
+type Result =
+  | 'INFP'
+  | 'ENFP'
+  | 'INFJ'
+  | 'ENFJ'
+  | 'INTP'
+  | 'ENTP'
+  | 'INTJ'
+  | 'ENTJ'
+  | 'ISFP'
+  | 'ESFP'
+  | 'ISTP'
+  | 'ESTP'
+  | 'ISFJ'
+  | 'ESFJ'
+  | 'ISTJ'
+  | 'ESTJ';
+
 const Result = () => {
-  const { testResult } = useParams();
+  const { testResult } = useParams<{ testResult: Result }>();
+
   const navigate = useNavigate();
 
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
@@ -32,23 +57,44 @@ const Result = () => {
     'ESTJ',
   ];
 
+  const obj = {
+    INFP: {},
+    ENFP: {},
+    INFJ: {},
+    ENFJ: {},
+    INTP: {},
+    ENTP: {},
+    INTJ: {},
+    ENTJ: {},
+    ISFP: {},
+    ESFP: {},
+    ISTP: {},
+    ESTP: {},
+    ISFJ: {},
+    ESFJ: {},
+    ISTJ: {},
+    ESTJ: {},
+  };
+
+  obj[testResult as Result] = {};
+
   useEffect(() => {
     if (!testResult || !validMbti.includes(testResult)) {
       navigate('/error');
     }
-  }, []);
+  }, [testResult]);
 
   const handleReplay = () => {
     navigate('/');
   };
 
-  const handleLinkModal = link => {
+  const handleLinkModal = (link: string) => {
     setIsLinkModalOpen(!isLinkModalOpen);
     navigator.clipboard.writeText(link);
 
     setTimeout(() => {
       setIsLinkModalOpen(false);
-    }, '2000');
+    }, 2000);
   };
 
   const handleCloseLinkModal = () => {
@@ -56,7 +102,7 @@ const Result = () => {
   };
 
   const handleKaTalkShare = async () => {
-    if (window.Kakao) {
+    if (window.Kakao && testResult) {
       const Kakao = window.Kakao;
       const kakaoAPI = import.meta.env.VITE_KAKAOTALK_APP_KEY;
 
@@ -67,7 +113,7 @@ const Result = () => {
       Kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
-          title: `${resultData[testResult]?.title}`,
+          title: `${resultData[testResult].title}`,
           description: '이세계에서의 직업을 확인해보세요!',
           imageUrl: `${import.meta.env.VITE_WEBSITE_URL}/img/thumbnail/${testResult}.png`,
           imageWidth: 300,
@@ -92,57 +138,59 @@ const Result = () => {
 
   return (
     <ResultContainer>
-      <ResultBox>
-        <ImgWrapper>
-          <ResultImg src={resultData[testResult]?.src} alt={`${resultData[testResult]?.title}`} />
-        </ImgWrapper>
-        <Title>{resultData[testResult]?.title}</Title>
-        <Desc>{resultData[testResult]?.desc}</Desc>
-        <MatchWrapper>
-          <MatchResult>
-            <MatchImgWrapper>
-              <MatchImg
-                src={`${MatchData[testResult]?.good.src}`}
-                alt={`${MatchData[testResult]?.good.title}`}
-              />
-            </MatchImgWrapper>
-            <MatchInfo>
-              <Match> ❤️ {MatchData[testResult]?.good.title} </Match>
-            </MatchInfo>
-          </MatchResult>
-          <MatchResult>
-            <MatchImgWrapper>
-              <MatchImg
-                src={`${MatchData[testResult]?.bad.src}`}
-                alt={`${MatchData[testResult]?.bad.title}`}
-              />
-            </MatchImgWrapper>
-            <MatchInfo>
-              <Match> 💔 {MatchData[testResult]?.bad.title} </Match>
-            </MatchInfo>
-          </MatchResult>
-        </MatchWrapper>
-        <ShareButton>
-          <KatalkButton onClick={handleKaTalkShare} label={'카카오톡 공유하기'} />
-          <LinkButton
-            onClick={() => handleLinkModal(window.location.href)}
-            label={'링크 복사하기'}
-          />
-        </ShareButton>
-        <EtcButtons>
-          <EtcButton onClick={handleReplay}>{'<< 다시 하기'}</EtcButton>
-          <EtcButton onClick={() => navigate('/results')}>{'전체 결과 >>'}</EtcButton>
-        </EtcButtons>
+      {validMbti.includes(testResult as Result) && (
+        <ResultBox>
+          <ImgWrapper>
+            <ResultImg src={resultData[testResult!].src} alt={`${resultData[testResult!].title}`} />
+          </ImgWrapper>
+          <Title>{resultData[testResult!].title}</Title>
+          <Desc>{resultData[testResult!].desc}</Desc>
+          <MatchWrapper>
+            <MatchResult>
+              <MatchImgWrapper>
+                <MatchImg
+                  src={`${MatchData[testResult!].good.src}`}
+                  alt={`${MatchData[testResult!].good.title}`}
+                />
+              </MatchImgWrapper>
+              <MatchInfo>
+                <Match> ❤️ {MatchData[testResult!].good.title} </Match>
+              </MatchInfo>
+            </MatchResult>
+            <MatchResult>
+              <MatchImgWrapper>
+                <MatchImg
+                  src={`${MatchData[testResult!].bad.src}`}
+                  alt={`${MatchData[testResult!].bad.title}`}
+                />
+              </MatchImgWrapper>
+              <MatchInfo>
+                <Match> 💔 {MatchData[testResult!].bad.title} </Match>
+              </MatchInfo>
+            </MatchResult>
+          </MatchWrapper>
+          <ShareButton>
+            <KatalkButton onClick={handleKaTalkShare} label={'카카오톡 공유하기'} />
+            <LinkButton
+              onClick={() => handleLinkModal(window.location.href)}
+              label={'링크 복사하기'}
+            />
+          </ShareButton>
+          <EtcButtons>
+            <EtcButton onClick={handleReplay}>{'<< 다시 하기'}</EtcButton>
+            <EtcButton onClick={() => navigate('/results')}>{'전체 결과 >>'}</EtcButton>
+          </EtcButtons>
 
-        {isLinkModalOpen && (
-          <ModalBackdrop onClick={handleCloseLinkModal}>
-            <ShareModal>
-              <p>복사 완료!</p>
-            </ShareModal>
-          </ModalBackdrop>
-        )}
-        <Adfit unit={'DAN-rjWFQP1lygxFUCzt'} width={320} height={50} />
-      </ResultBox>
+          {isLinkModalOpen && (
+            <ModalBackdrop onClick={handleCloseLinkModal}>
+              <ShareModal>
+                <p>복사 완료!</p>
+              </ShareModal>
+            </ModalBackdrop>
+          )}
+          <Adfit unit={'DAN-rjWFQP1lygxFUCzt'} width={320} height={50} />
+        </ResultBox>
+      )}
     </ResultContainer>
   );
 };
