@@ -1,15 +1,16 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 import themes from '../style/themes';
 
-const Button = ({ backgroundColor, size, label, onClick }) => {
+export interface ButtonProps {
+  size?: string;
+  label: string | null;
+  onClick?: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ size, label, onClick }) => {
   return (
-    <StyledButton
-      type="button"
-      className={`storybook-button--${size}`}
-      style={backgroundColor && { backgroundColor }}
-      onClick={onClick}
-    >
+    <StyledButton type="button" className={`storybook-button--${size}`} onClick={onClick}>
       {label}
     </StyledButton>
   );
@@ -24,6 +25,7 @@ const StyledButton = styled.button`
   line-height: 1;
   color: black;
   box-shadow: 0 0 10px ${themes.pinkColor};
+  background-color: white;
 
   &.storybook-button--choice {
     font-size: 12px;
@@ -31,7 +33,7 @@ const StyledButton = styled.button`
     width: 300px;
   }
 
-  &.storybook-button--result {
+  &.storybook-button--share {
     font-size: 12px;
     padding: 11px 20px;
     width: 300px;
@@ -50,16 +52,8 @@ const StyledButton = styled.button`
   }
 `;
 
-Button.propTypes = {
-  backgroundColor: PropTypes.string,
-  size: PropTypes.oneOf(['choice', 'result', 'start']),
-  label: PropTypes.string,
-  onClick: PropTypes.func,
-};
-
 Button.defaultProps = {
-  backgroundColor: null,
-  size: 'start',
+  size: 'choice',
   onClick: undefined,
   label: null,
 };
