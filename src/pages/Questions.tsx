@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import themes from '../style/themes';
 import { ChoiceButton } from '../stories/Button.stories';
@@ -26,7 +26,7 @@ const Questions = () => {
   };
 
   const boxVariants = {
-    entry: back => ({
+    entry: (back: number) => ({
       x: back ? -300 : 300,
       opacity: 0,
       transition: { duration: 0.5 },
@@ -38,7 +38,7 @@ const Questions = () => {
       transition: { duration: 0.5 },
       scale: 1,
     },
-    exit: back => ({
+    exit: (back: number) => ({
       x: back ? 300 : -300,
       opacity: 0,
       scale: 0.8,
@@ -48,7 +48,7 @@ const Questions = () => {
 
   const [back, setBack] = useState(false);
 
-  const handleNextQ = type => {
+  const handleNextQ = (type: string) => {
     setBack(false);
     if (curQIdx + 1 < questionData.length) {
       setCurQIdx(prevIdx => prevIdx + 1);
@@ -83,7 +83,7 @@ const Questions = () => {
       setTimeout(() => {
         setIsLoadingOpen(false);
         navigate(`/result/${mbti}`);
-      }, '5000');
+      }, 5000);
     }
   };
 
@@ -97,6 +97,8 @@ const Questions = () => {
     }
   };
 
+  console.log(width);
+
   return (
     <>
       <QuestionContainer>
@@ -108,10 +110,10 @@ const Questions = () => {
                 color={themes.purpleColor}
                 height="10px"
                 width="250px"
-                loading={setIsLoadingOpen}
+                loading={isLoadingOpen}
                 aria-label="Loading Spinner"
                 cssOverride={css}
-                speedMultiplier="1"
+                speedMultiplier={1}
               />
             </LoadingSpinner>
           ) : (
@@ -143,7 +145,6 @@ const Questions = () => {
                     key={idx}
                     onClick={() => handleNextQ(answer.type)}
                     label={answer.text}
-                    answer={answer}
                   />
                 ))}
               </AnswerBox>
@@ -200,7 +201,11 @@ const BarAndPrevWrapper = styled.div`
   padding-bottom: 20px;
 `;
 
-const ProgressBar = styled.div`
+interface ProgressProps {
+  width?: number;
+}
+
+const ProgressBar = styled.div<ProgressProps>`
   width: 250px;
   height: 20px;
   background-color: white;
@@ -223,7 +228,7 @@ const PreButton = styled.button`
   }
 `;
 
-const Progress = styled.div`
+const Progress = styled.div<ProgressProps>`
   width: ${props => props.width}px;
   height: 20px;
   background-color: ${themes.purpleColor};
