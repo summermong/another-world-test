@@ -1,6 +1,25 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 import themes from '../style/themes';
+
+export interface PersonalityCardProps {
+  src: string;
+  title: string;
+  onClick: () => void;
+}
+
+const PersonalityCard: React.FC<PersonalityCardProps> = ({ src, title, onClick }) => {
+  return (
+    <ResultCard onClick={onClick}>
+      <ImgWrapper>
+        <ResultImg src={src} alt={title} />
+      </ImgWrapper>
+      <ResultInfo>
+        <ResultTitle>{title}</ResultTitle>
+      </ResultInfo>
+    </ResultCard>
+  );
+};
 
 const ResultCard = styled.div`
   width: 310px;
@@ -52,26 +71,5 @@ const ResultTitle = styled.div`
   font-weight: 700;
   text-shadow: 0px 0px 3px ${themes.pinkColor};
 `;
-
-const PersonalityCard = ({ src, title, sub, onClick }) => {
-  return (
-    <ResultCard onClick={onClick}>
-      <ImgWrapper>
-        <ResultImg src={src} alt={title} />
-      </ImgWrapper>
-      <ResultInfo>
-        <ResultTitle>{title}</ResultTitle>
-        <div>{sub}</div>
-      </ResultInfo>
-    </ResultCard>
-  );
-};
-
-PersonalityCard.propTypes = {
-  title: PropTypes.string,
-  sub: PropTypes.string,
-  src: PropTypes.string,
-  onClick: PropTypes.func,
-};
 
 export default PersonalityCard;
