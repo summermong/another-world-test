@@ -1,7 +1,9 @@
 # [✨ 이세계에서 나의 직업은?](https://another-world-test.vercel.app/)
 > 이세계 테스트는 Single Page Application으로 구현된 MBTI 테스트입니다.
 
+<a href="https://another-world-test.vercel.app">
 <img width="354" alt="image" src="https://github.com/summermong/summermong/assets/124887974/2b33db0f-3088-427a-bbcc-4becb3f9ac27">
+</a>
 
 1. 12가지 질문을 읽고 상황을 상상하면서 답을 골라보세요. **BGM🎵까지 들어주면 더 몰입돼요!**
 2. 당신과 가장 잘 어울리는 **이세계 직업과 최고의 궁합❤️, 최악의 궁합💔**도 확인해보세요.
