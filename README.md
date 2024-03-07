@@ -23,7 +23,7 @@
 
 
 ## 이세계 MBTI 테스트 시연
-영상 들어갈 예정
+https://github.com/summermong/another-world-test/assets/124887974/5a4ab753-e514-4fa5-afcc-552822ae18b2
 
 
 <br />
@@ -47,12 +47,26 @@
 
 
 ## 이세계 MBTI 정보
-* 배포 링크 [클릭](https://another-world-test.vercel.app/)
+* [배포 링크](https://another-world-test.vercel.app/)
   
 * 개발 기간
   * v1.0.0: 24.01.05 ~ 24.02.28 (ReactJS)
   * v2.0.0: 24.03.02 ~ 24.03.04 (TypeScript migration)
-    
+ 
+* 개발 인원
+    | <img src="https://avatars.githubusercontent.com/u/124887974?v=4" width="200" height="200" /> |
+    | :------------------------------------------------------------------------------------------: |
+    |                                       summermong(황윤)                                        |
+    |                                      기획, 디자인, Frontend                                     |
+
+
+* GA로 알아본 유저 액션 (2024.02.27 ~ 2024.03.06)
+
+![image](https://github.com/GomGomDiary/GomGomFront/assets/124887974/c3da5cea-a654-48e0-85a2-7611b66bb896)
+
+별도 홍보/광고 없이 순수 Oranic으로 530명의 유저가 테스트에 참여했습니다. ✨
+
+
 * 코드 컨벤션
   | Type     | Desc                                                                          |
   | :------- | :---------------------------------------------------------------------------- |
