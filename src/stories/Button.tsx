@@ -4,7 +4,7 @@ import themes from '../style/themes';
 
 export interface ButtonProps {
   size?: string;
-  label: string | null;
+  label?: string;
   onClick?: () => void;
 }
 
@@ -53,9 +53,9 @@ const StyledButton = styled.button`
 `;
 
 Button.defaultProps = {
-  size: 'choice',
+  size: 'start',
+  label: '버튼 텍스트',
   onClick: undefined,
-  label: null,
 };
 
 export default Button;
