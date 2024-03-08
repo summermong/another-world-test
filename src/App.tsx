@@ -68,8 +68,8 @@ function App() {
   return (
     <AppContainer>
       <BrowserRouter basename="/">
-        <MusicPlayer>
-          <Music src={getMusicIcon()} onClick={handleMusicStart} alt="음악 플레이어 아이콘" />
+        <MusicPlayer onClick={handleMusicStart}>
+          <Music src={getMusicIcon()} alt="음악 플레이어 아이콘" />
         </MusicPlayer>
         <GlobalStyles />
         <ThemeProvider theme={themes}>
@@ -94,7 +94,7 @@ const AppContainer = styled.div`
   position: relative;
 `;
 
-const MusicPlayer = styled.div`
+const MusicPlayer = styled.button`
   width: 30px;
   height: 30px;
   position: absolute;
@@ -108,6 +108,7 @@ const MusicPlayer = styled.div`
   border-radius: 25px;
   margin: 10px;
   box-shadow: 0 0 10px ${themes.pinkColor};
+  border: none;
   cursor: pointer;
 `;
 
