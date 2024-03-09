@@ -22,8 +22,9 @@ function App() {
 
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const musicFile = new URL(`../src/assets/music/ost.mp3`, import.meta.url).href;
   const music = useMemo(() => {
-    const audio = new Audio('/music/ost.mp3');
+    const audio = new Audio(`${musicFile}`);
     audio.loop = true;
     return audio;
   }, []);
@@ -38,8 +39,11 @@ function App() {
     }
   };
 
+  const musicPlayerImgUrl = new URL(`../src/assets/img/icon/music.png`, import.meta.url).href;
+  const muteImgUrl = new URL(`../src/assets/img/icon/mute.png`, import.meta.url).href;
+
   const getMusicIcon = () => {
-    return isPlaying ? '/img/icon/music.png' : '/img/icon/mute.png';
+    return isPlaying ? `${musicPlayerImgUrl}` : `${muteImgUrl}`;
   };
 
   useEffect(() => {
