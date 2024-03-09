@@ -1,5 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
+const resultImgUrl = new URL('../../src/assets/img/background/background.webp', import.meta.url)
+  .href;
+
 const GlobalStyles = createGlobalStyle`
 * {
     margin: 0;
@@ -11,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
 body {
   width: 100vw;
   height: 100vh;
-  background-image: url('/img/background/background.webp');
+  background-image: url(${resultImgUrl});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
