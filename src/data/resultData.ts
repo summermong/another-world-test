@@ -6,7 +6,7 @@ export interface ResultType {
 
 export const resultData: Record<string, ResultType> = {
   ENFJ: {
-    src: `/img/result/ENFJ.png`,
+    src: `ENFJ`,
     title: '선을 위해 노력하는 사제',
     desc: `
     당신을 대표하는 단어는 '인류애와 조화'입니다.
@@ -27,7 +27,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ENFP: {
-    src: `/img/result/ENFP.png`,
+    src: `ENFP`,
     title: '숲속의 명랑한 엘프',
     desc: `
     당신을 대표하는 단어는 '낙관'입니다.
@@ -49,7 +49,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ENTJ: {
-    src: `/img/result/ENTJ.png`,
+    src: `ENTJ`,
     title: '믿음직스러운 보안관',
     desc: `
     당신을 대표하는 단어는 '카리스마'입니다.
@@ -71,7 +71,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ENTP: {
-    src: `/img/result/ENTP.png`,
+    src: `ENTP`,
     title: '혁명을 꿈꾸는 마검사',
     desc: `
     당신을 대표하는 단어는 '자신감'입니다.
@@ -93,7 +93,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ESFJ: {
-    src: `/img/result/ESFJ.png`,
+    src: `ESFJ`,
     title: '백작 아가씨/도련님',
     desc: `
     당신을 대표하는 단어는 '배려'입니다.
@@ -115,7 +115,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ESFP: {
-    src: `/img/result/ESFP.png`,
+    src: `ESFP`,
     title: '매력적인 무희',
     desc: `
     당신을 대표하는 단어는 '분위기 메이커'입니다.
@@ -137,7 +137,7 @@ export const resultData: Record<string, ResultType> = {
 `,
   },
   ESTJ: {
-    src: `/img/result/ESTJ.png`,
+    src: `ESTJ`,
     title: '마법진 수석 디자이너',
     desc: `
     당신을 대표하는 단어는 '상식'입니다.
@@ -159,7 +159,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ESTP: {
-    src: `/img/result/ESTP.png`,
+    src: `ESTP`,
     title: '백발백중 명궁수',
     desc: `
     당신을 대표하는 단어는 '폼'입니다.
@@ -181,7 +181,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   INFJ: {
-    src: `/img/result/INFJ.png`,
+    src: `INFJ`,
     title: '지혜로운 점술사',
     desc: `
     당신을 대표하는 단어는 '생각'입니다.
@@ -203,7 +203,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   INFP: {
-    src: `/img/result/INFP.png`,
+    src: `INFP`,
     title: '낭만적인 음유시인',
     desc: `
     당신을 대표하는 단어는 '감성'입니다.
@@ -225,7 +225,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   INTJ: {
-    src: `/img/result/INTJ.png`,
+    src: `INTJ`,
     title: '어둠의 대마법사',
     desc: `
     당신을 대표하는 단어는 '이성과 논리'입니다.
@@ -247,7 +247,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   INTP: {
-    src: `/img/result/INTP.png`,
+    src: `INTP`,
     title: '힘을 숨긴 연금술사',
     desc: `
     당신을 대표하는 단어는 '공상과 상상'입니다.
@@ -269,7 +269,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ISFJ: {
-    src: `/img/result/ISFJ.png`,
+    src: `ISFJ`,
     title: '유능한 궁정 약사',
     desc: `
     당신을 대표하는 단어는 '배려심'입니다.
@@ -291,7 +291,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ISFP: {
-    src: `/img/result/ISFP.png`,
+    src: `ISFP`,
     title: '따뜻한 감성의 힐러',
     desc: `
     당신을 대표하는 단어는 '소박함'입니다.
@@ -313,7 +313,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ISTJ: {
-    src: `/img/result/ISTJ.png`,
+    src: `ISTJ`,
     title: '엘리트 기사단장',
     desc: `
     당신을 대표하는 단어는 '책임감'입니다.
@@ -335,7 +335,7 @@ export const resultData: Record<string, ResultType> = {
     `,
   },
   ISTP: {
-    src: `/img/result/ISTP.png`,
+    src: `ISTP`,
     title: '외강내유 대장장이',
     desc: `
     당신을 대표하는 단어는 '과묵'입니다.
