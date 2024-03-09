@@ -97,8 +97,6 @@ const Questions = () => {
     }
   };
 
-  console.log(width);
-
   return (
     <>
       <QuestionContainer>
