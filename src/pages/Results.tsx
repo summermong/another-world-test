@@ -8,6 +8,7 @@ import Adfit from '../hook/Adfit';
 
 const Results = () => {
   const navigate = useNavigate();
+
   return (
     <ResultContainer>
       <ResultList>
@@ -17,7 +18,7 @@ const Results = () => {
           return (
             <PersonalityCard
               key={key}
-              src={src}
+              src={`src/assets/img/result/${src}.png`}
               title={title}
               onClick={() => navigate(`/result/${key}`)}
             />
