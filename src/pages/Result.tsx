@@ -33,10 +33,18 @@ type Result =
 
 const Result = () => {
   const { testResult } = useParams<{ testResult: Result }>();
-
   const navigate = useNavigate();
-
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
+
+  const resultImgUrl = new URL(`/src/assets/img/result/${testResult}.png`, import.meta.url).href;
+  const goodImgUrl = new URL(
+    `/src/assets/img/result/${MatchData[testResult!].good.src}.png`,
+    import.meta.url,
+  ).href;
+  const badImgUrl = new URL(
+    `/src/assets/img/result/${MatchData[testResult!].bad.src}.png`,
+    import.meta.url,
+  ).href;
 
   const validMbti = [
     'INFP',
@@ -141,17 +149,14 @@ const Result = () => {
       {validMbti.includes(testResult as Result) && (
         <ResultBox>
           <ImgWrapper>
-            <ResultImg src={resultData[testResult!].src} alt={`${resultData[testResult!].title}`} />
+            <ResultImg src={resultImgUrl} alt={`${resultData[testResult!].title}`} />
           </ImgWrapper>
           <Title>{resultData[testResult!].title}</Title>
           <Desc>{resultData[testResult!].desc}</Desc>
           <MatchWrapper>
             <MatchResult>
               <MatchImgWrapper>
-                <MatchImg
-                  src={`${MatchData[testResult!].good.src}`}
-                  alt={`${MatchData[testResult!].good.title}`}
-                />
+                <MatchImg src={goodImgUrl} alt={`${MatchData[testResult!].good.title}`} />
               </MatchImgWrapper>
               <MatchInfo>
                 <Match> ❤️ {MatchData[testResult!].good.title} </Match>
@@ -159,10 +164,7 @@ const Result = () => {
             </MatchResult>
             <MatchResult>
               <MatchImgWrapper>
-                <MatchImg
-                  src={`${MatchData[testResult!].bad.src}`}
-                  alt={`${MatchData[testResult!].bad.title}`}
-                />
+                <MatchImg src={badImgUrl} alt={`${MatchData[testResult!].bad.title}`} />
               </MatchImgWrapper>
               <MatchInfo>
                 <Match> 💔 {MatchData[testResult!].bad.title} </Match>
