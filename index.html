@@ -15,14 +15,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="이세계 직업 테스트" />
     <meta property="og:description" content="이세계에서 나의 직업은?" />
-
-    <!-- JavaScript를 통해 동적으로 이미지 URL 생성 -->
-    <script type="module">
-      const scriptUrl = import.meta.url;
-      const imageUrl = new URL('../src/assets/img/icon/ogImage.png', scriptUrl).href;
-      document.head.innerHTML += `<meta property="og:image" content="${imageUrl}" />`;
-    </script>
-
+    <meta property="og:image" content="%VITE_WEBSITE_URL%/src/assets/img/icon/ogImage.png" />
     <link rel="stylesheet" href="/src/style/font.css" />
     <meta name="google-site-verification" content="uYWI6k8UtEL7U3aJSO13LQd9SFF0XpZHzfVheNEQ8WU" />
     <meta name="naver-site-verification" content="0be7e76b7bb97e257b729ea33deed51597b32a93" />
