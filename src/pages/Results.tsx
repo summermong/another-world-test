@@ -15,10 +15,11 @@ const Results = () => {
         <Title>전체 결과</Title>
         {Object.keys(resultData).map(key => {
           const { src, title } = resultData[key];
+          const resultImgUrl = new URL(`/src/assets/img/result/${src}.png`, import.meta.url).href;
           return (
             <PersonalityCard
               key={key}
-              src={`src/assets/img/result/${src}.png`}
+              src={resultImgUrl}
               title={title}
               onClick={() => navigate(`/result/${key}`)}
             />
