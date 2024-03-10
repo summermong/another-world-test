@@ -46,6 +46,7 @@ const Result = () => {
     import.meta.url,
   ).href;
   const thumbnailUrl = new URL(`/src/assets/img/thumbnail/${testResult}.png`, import.meta.url).href;
+  console.log(thumbnailUrl);
 
   const validMbti = [
     'INFP',
