@@ -110,6 +110,10 @@ const Result = () => {
     setIsLinkModalOpen(false);
   };
 
+  const handleClickPartner = (matchUrl: string) => {
+    navigate(`/result/${matchUrl}`);
+  };
+
   const handleKaTalkShare = async () => {
     if (window.Kakao && testResult) {
       const Kakao = window.Kakao;
@@ -155,7 +159,7 @@ const Result = () => {
           <Title>{resultData[testResult!].title}</Title>
           <Desc>{resultData[testResult!].desc}</Desc>
           <MatchWrapper>
-            <MatchResult>
+            <MatchResult onClick={() => handleClickPartner(`${MatchData[testResult!].good.src}`)}>
               <MatchImgWrapper>
                 <MatchImg src={goodImgUrl} alt={`${MatchData[testResult!].good.title}`} />
               </MatchImgWrapper>
@@ -163,7 +167,7 @@ const Result = () => {
                 <Match> ❤️ {MatchData[testResult!].good.title} </Match>
               </MatchInfo>
             </MatchResult>
-            <MatchResult>
+            <MatchResult onClick={() => handleClickPartner(`${MatchData[testResult!].bad.src}`)}>
               <MatchImgWrapper>
                 <MatchImg src={badImgUrl} alt={`${MatchData[testResult!].bad.title}`} />
               </MatchImgWrapper>
