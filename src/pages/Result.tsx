@@ -45,6 +45,7 @@ const Result = () => {
     `/src/assets/img/result/${MatchData[testResult!].bad.src}.png`,
     import.meta.url,
   ).href;
+  const thumbnailUrl = new URL(`/src/assets/img/thumbnail/${testResult}.png`, import.meta.url).href;
 
   const validMbti = [
     'INFP',
@@ -123,7 +124,7 @@ const Result = () => {
         content: {
           title: `${resultData[testResult].title}`,
           description: '이세계에서의 직업을 확인해보세요!',
-          imageUrl: `${import.meta.env.VITE_WEBSITE_URL}/img/thumbnail/${testResult}.png`,
+          imageUrl: `${thumbnailUrl}`,
           imageWidth: 300,
           imageHeight: 300,
           link: {
