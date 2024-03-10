@@ -26,6 +26,7 @@ const StyledButton = styled.button`
   color: black;
   box-shadow: 0 0 10px ${themes.pinkColor};
   background-color: white;
+  font-family: 'Heir of Light';
 
   &.storybook-button--choice {
     font-size: 12px;
