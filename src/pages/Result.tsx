@@ -6,6 +6,7 @@ import { MatchData } from '../data/resultData';
 import { KatalkButton, LinkButton } from '../stories/Button.stories';
 import { useNavigate, useParams } from 'react-router-dom';
 import Adfit from '../hook/Adfit';
+import SEOMetaTag from '../hook/SEOMetaTag';
 
 declare global {
   interface Window {
@@ -46,7 +47,6 @@ const Result = () => {
     import.meta.url,
   ).href;
   const thumbnailUrl = new URL(`/src/assets/img/thumbnail/${testResult}.png`, import.meta.url).href;
-  console.log(thumbnailUrl);
 
   const validMbti = [
     'INFP',
@@ -151,55 +151,64 @@ const Result = () => {
   };
 
   return (
-    <ResultContainer>
-      {validMbti.includes(testResult as Result) && (
-        <ResultBox>
-          <ImgWrapper>
-            <ResultImg src={resultImgUrl} alt={`${resultData[testResult!].title}`} />
-          </ImgWrapper>
-          <Title>{resultData[testResult!].title}</Title>
-          <Desc>{resultData[testResult!].desc}</Desc>
-          <MatchWrapper>
-            <MatchResult onClick={() => handleClickPartner(`${MatchData[testResult!].good.src}`)}>
-              <MatchImgWrapper>
-                <MatchImg src={goodImgUrl} alt={`${MatchData[testResult!].good.title}`} />
-              </MatchImgWrapper>
-              <MatchInfo>
-                <Match> ❤️ {MatchData[testResult!].good.title} </Match>
-              </MatchInfo>
-            </MatchResult>
-            <MatchResult onClick={() => handleClickPartner(`${MatchData[testResult!].bad.src}`)}>
-              <MatchImgWrapper>
-                <MatchImg src={badImgUrl} alt={`${MatchData[testResult!].bad.title}`} />
-              </MatchImgWrapper>
-              <MatchInfo>
-                <Match> 💔 {MatchData[testResult!].bad.title} </Match>
-              </MatchInfo>
-            </MatchResult>
-          </MatchWrapper>
-          <ShareButton>
-            <KatalkButton onClick={handleKaTalkShare} label={'카카오톡 공유하기'} />
-            <LinkButton
-              onClick={() => handleLinkModal(window.location.href)}
-              label={'링크 복사하기'}
-            />
-          </ShareButton>
-          <EtcButtons>
-            <EtcButton onClick={handleReplay}>{'<< 다시 하기'}</EtcButton>
-            <EtcButton onClick={() => navigate('/results')}>{'전체 결과 >>'}</EtcButton>
-          </EtcButtons>
+    <>
+      <SEOMetaTag
+        title={`${resultData[testResult!]?.title}`}
+        description={`${resultData[testResult!]?.title}`}
+        keywords={`${resultData[testResult!]?.title}`}
+        imgsrc={resultImgUrl}
+        url={window.location.href}
+      />
+      <ResultContainer>
+        {validMbti.includes(testResult as Result) && (
+          <ResultBox>
+            <ImgWrapper>
+              <ResultImg src={resultImgUrl} alt={`${resultData[testResult!].title}`} />
+            </ImgWrapper>
+            <Title>{resultData[testResult!].title}</Title>
+            <Desc>{resultData[testResult!].desc}</Desc>
+            <MatchWrapper>
+              <MatchResult onClick={() => handleClickPartner(`${MatchData[testResult!].good.src}`)}>
+                <MatchImgWrapper>
+                  <MatchImg src={goodImgUrl} alt={`${MatchData[testResult!].good.title}`} />
+                </MatchImgWrapper>
+                <MatchInfo>
+                  <Match> ❤️ {MatchData[testResult!].good.title} </Match>
+                </MatchInfo>
+              </MatchResult>
+              <MatchResult onClick={() => handleClickPartner(`${MatchData[testResult!].bad.src}`)}>
+                <MatchImgWrapper>
+                  <MatchImg src={badImgUrl} alt={`${MatchData[testResult!].bad.title}`} />
+                </MatchImgWrapper>
+                <MatchInfo>
+                  <Match> 💔 {MatchData[testResult!].bad.title} </Match>
+                </MatchInfo>
+              </MatchResult>
+            </MatchWrapper>
+            <ShareButton>
+              <KatalkButton onClick={handleKaTalkShare} label={'카카오톡 공유하기'} />
+              <LinkButton
+                onClick={() => handleLinkModal(window.location.href)}
+                label={'링크 복사하기'}
+              />
+            </ShareButton>
+            <EtcButtons>
+              <EtcButton onClick={handleReplay}>{'<< 다시 하기'}</EtcButton>
+              <EtcButton onClick={() => navigate('/results')}>{'전체 결과 >>'}</EtcButton>
+            </EtcButtons>
 
-          {isLinkModalOpen && (
-            <ModalBackdrop onClick={handleCloseLinkModal}>
-              <ShareModal>
-                <p>복사 완료!</p>
-              </ShareModal>
-            </ModalBackdrop>
-          )}
-          <Adfit unit={'DAN-rjWFQP1lygxFUCzt'} width={320} height={50} />
-        </ResultBox>
-      )}
-    </ResultContainer>
+            {isLinkModalOpen && (
+              <ModalBackdrop onClick={handleCloseLinkModal}>
+                <ShareModal>
+                  <p>복사 완료!</p>
+                </ShareModal>
+              </ModalBackdrop>
+            )}
+            <Adfit unit={'DAN-rjWFQP1lygxFUCzt'} width={320} height={50} />
+          </ResultBox>
+        )}
+      </ResultContainer>
+    </>
   );
 };
 
