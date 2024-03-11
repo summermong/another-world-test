@@ -64,7 +64,7 @@ https://github.com/summermong/another-world-test/assets/124887974/5a4ab753-e514-
 
 ![image](https://github.com/GomGomDiary/GomGomFront/assets/124887974/c3da5cea-a654-48e0-85a2-7611b66bb896)
 
-별도 홍보/광고 없이 순수 Oranic으로 530명의 유저가 테스트에 참여했습니다. ✨
+별도 홍보/광고 없이 순수 Organic으로 551번의 테스트가 진행되었습니다. ✨
 
 
 * 코드 컨벤션
