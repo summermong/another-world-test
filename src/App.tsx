@@ -58,15 +58,17 @@ function App() {
   }, [music]);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
-    script.async = true;
+    if (window.location.pathname.includes('result/')) {
+      const script = document.createElement('script');
+      script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+      script.async = true;
 
-    document.body.appendChild(script);
+      document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
   }, []);
 
   return (
