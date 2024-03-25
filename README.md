@@ -1,5 +1,5 @@
 # [✨ 이세계에서 나의 직업은?](https://another-world-test.vercel.app/)
-> 이세계 테스트는 Single Page Application으로 구현된 MBTI 테스트입니다.
+> 이세계 MBTI 테스트는 Single Page Application으로 구현된 MBTI 테스트입니다.
 
 <a href="https://another-world-test.vercel.app">
 <img width="354" alt="image" src="https://github.com/summermong/summermong/assets/124887974/2b33db0f-3088-427a-bbcc-4becb3f9ac27">
@@ -15,9 +15,8 @@
 <!-- TOC -->
 ### Contents
 * [이세계 MBTI 테스트 시연](#이세계-MBTI-테스트-시연)
-* [이세계 MBTI 기술 스택](#이세계-MBTI-기술-스택)
-* [이세계 MBTI 정보](#이세계-MBTI-정보)
-* [이세계 MBTI 기록 및 트러블 슈팅](#이세계-MBTI-기록-및-트러블-슈팅)
+* [이세계 MBTI 테스트 기술 스택](#이세계-MBTI-테스트-기술-스택)
+* [이세계 MBTI 테스트 정보](#이세계-MBTI-테스트-정보)
 <br />
 <!-- TOC -->
 
@@ -29,7 +28,7 @@ https://github.com/summermong/another-world-test/assets/124887974/5a4ab753-e514-
 <br />
 
 
-## 이세계 MBTI 기술 스택
+## 이세계 MBTI 테스트 기술 스택
 | Stack                                                                                                               | Desc                         |
 | :------------------------------------------------------------------------------------------------------------------ | :--------------------------- |
 | <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/>                        | React                        |
@@ -46,7 +45,7 @@ https://github.com/summermong/another-world-test/assets/124887974/5a4ab753-e514-
 <br />
 
 
-## 이세계 MBTI 정보
+## 이세계 MBTI 테스트 정보
 * [배포 링크](https://another-world-test.vercel.app/)
   
 * 개발 기간
