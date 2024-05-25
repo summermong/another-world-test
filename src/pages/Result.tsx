@@ -32,6 +32,18 @@ type Result =
   | 'ESTJ';
 
 const Result = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   const { testResult } = useParams<{ testResult: Result }>();
   const navigate = useNavigate();
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
